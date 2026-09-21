@@ -1,0 +1,41 @@
+{
+  "name": "web",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start",
+    "start:server": "next start",
+    "lint": "eslint",
+    "seed:admin": "tsx --env-file=.env.local scripts/seed-admin.ts",
+    "seed:demo-profile": "tsx --env-file=.env.local scripts/seed-demo-profile.ts",
+    "test": "vitest run",
+    "build:static": "powershell -ExecutionPolicy Bypass -File scripts/build-static.ps1",
+    "deploy:gh": "powershell -ExecutionPolicy Bypass -File scripts/deploy-gh-pages.ps1"
+  },
+  "dependencies": {
+    "bcryptjs": "^3.0.3",
+    "maplibre-gl": "^5.24.0",
+    "mongodb": "^6.21.0",
+    "next": "16.2.10",
+    "next-auth": "^5.0.0-beta.32",
+    "react": "19.2.4",
+    "react-dom": "19.2.4",
+    "react-map-gl": "^8.1.1",
+    "recharts": "^3.9.2",
+    "zod": "^4.4.3"
+  },
+  "devDependencies": {
+    "@tailwindcss/postcss": "^4",
+    "@types/node": "^20",
+    "@types/react": "^19",
+    "@types/react-dom": "^19",
+    "eslint": "^9",
+    "eslint-config-next": "16.2.10",
+    "tailwindcss": "^4",
+    "tsx": "^4.23.4",
+    "typescript": "^5",
+    "vitest": "^3.2.7"
+  }
+}

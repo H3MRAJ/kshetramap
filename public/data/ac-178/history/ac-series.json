@@ -1,0 +1,359 @@
+{
+  "ac_no": 178,
+  "ac_name": "Mokama",
+  "focus_key": "anant_kumar_singh",
+  "focus_name": "Anant Kumar Singh",
+  "years": [
+    {
+      "year": 2015,
+      "election_id": "bihar-vs-2015",
+      "name": "Bihar Vidhan Sabha 2015",
+      "electors_total": 253898,
+      "total_valid": 141283,
+      "grand_total": 144477,
+      "nota": 3194,
+      "booth_count": 244,
+      "winner_key": "anant_kumar_singh",
+      "winner_name": "Anant Kumar Singh",
+      "winner_party": "Independent",
+      "winner_votes": 53969,
+      "winner_share_pct": 38.2,
+      "runner_up_key": "neeraj_kumar",
+      "runner_up_name": "Neeraj Kumar",
+      "runner_up_votes": 35608,
+      "margin": 18361,
+      "focus_key": "anant_kumar_singh",
+      "focus_name": "Anant Kumar Singh",
+      "focus_votes": 53969,
+      "focus_share_pct": 38.2,
+      "candidates": [
+        {
+          "key": "kanhaiya_kumar_singh",
+          "name": "Kanhaiya Kumar Singh",
+          "party": "LJP",
+          "color": "#2563eb",
+          "evm_votes": 15458,
+          "grand_votes": 15472,
+          "booths_won": 10
+        },
+        {
+          "key": "neeraj_kumar",
+          "name": "Neeraj Kumar",
+          "party": "JD(U)",
+          "color": "#dc2626",
+          "evm_votes": 35608,
+          "grand_votes": 35657,
+          "booths_won": 67
+        },
+        {
+          "key": "raju_prasad",
+          "name": "Raju Prasad",
+          "party": "CPI",
+          "color": "#dc2626",
+          "evm_votes": 2792,
+          "grand_votes": 2793,
+          "booths_won": 0
+        },
+        {
+          "key": "ramkishan",
+          "name": "Ramkishan",
+          "party": "Independent",
+          "color": "#ea580c",
+          "evm_votes": 1075,
+          "grand_votes": 1077,
+          "booths_won": 0
+        },
+        {
+          "key": "ajay_mahto",
+          "name": "Ajay Mahto",
+          "party": "Independent",
+          "color": "#7c3aed",
+          "evm_votes": 772,
+          "grand_votes": 772,
+          "booths_won": 0
+        },
+        {
+          "key": "deo_narayan_prasad_singh",
+          "name": "Deo Narayan Prasad Singh",
+          "party": "SP",
+          "color": "#0891b2",
+          "evm_votes": 3212,
+          "grand_votes": 3212,
+          "booths_won": 0
+        },
+        {
+          "key": "rakesh_kumar",
+          "name": "Rakesh Kumar",
+          "party": "BLRP",
+          "color": "#db2777",
+          "evm_votes": 1582,
+          "grand_votes": 1582,
+          "booths_won": 0
+        },
+        {
+          "key": "lalan_singh",
+          "name": "Lalan Singh",
+          "party": "JAP(L)",
+          "color": "#ea580c",
+          "evm_votes": 16650,
+          "grand_votes": 16655,
+          "booths_won": 19
+        },
+        {
+          "key": "shyam_nandan_prasad",
+          "name": "Shyam Nandan Prasad",
+          "party": "Independent",
+          "color": "#65a30d",
+          "evm_votes": 1582,
+          "grand_votes": 1582,
+          "booths_won": 0
+        },
+        {
+          "key": "anjani_kumar_sinha",
+          "name": "Anjani Kumar Sinha",
+          "party": "Independent",
+          "color": "#ca8a04",
+          "evm_votes": 1941,
+          "grand_votes": 1942,
+          "booths_won": 1
+        },
+        {
+          "key": "anant_kumar_singh",
+          "name": "Anant Kumar Singh",
+          "party": "Independent",
+          "color": "#1a6b3c",
+          "evm_votes": 53969,
+          "grand_votes": 54005,
+          "booths_won": 147
+        },
+        {
+          "key": "kumar_navneet_himanshu",
+          "name": "Kumar Navneet Himanshu",
+          "party": "Independent",
+          "color": "#4f46e5",
+          "evm_votes": 1524,
+          "grand_votes": 1525,
+          "booths_won": 0
+        },
+        {
+          "key": "nageshwar_mahto",
+          "name": "Nageshwar Mahto",
+          "party": "Independent",
+          "color": "#0d9488",
+          "evm_votes": 826,
+          "grand_votes": 826,
+          "booths_won": 0
+        },
+        {
+          "key": "bijendra_kumar",
+          "name": "Bijendra Kumar",
+          "party": "Independent",
+          "color": "#2563eb",
+          "evm_votes": 1555,
+          "grand_votes": 1555,
+          "booths_won": 0
+        },
+        {
+          "key": "rajesh_kumar_ratnakar",
+          "name": "Rajesh Kumar Ratnakar",
+          "party": "Independent",
+          "color": "#6b7280",
+          "evm_votes": 2737,
+          "grand_votes": 2738,
+          "booths_won": 0
+        }
+      ]
+    },
+    {
+      "year": 2020,
+      "election_id": "bihar-vs-2020",
+      "name": "Bihar Vidhan Sabha 2020",
+      "electors_total": 275028,
+      "total_valid": 143410,
+      "grand_total": 147930,
+      "nota": 4520,
+      "booth_count": 408,
+      "winner_key": "anant_kumar_singh",
+      "winner_name": "Anant Kumar Singh",
+      "winner_party": "RJD",
+      "winner_votes": 78383,
+      "winner_share_pct": 54.66,
+      "runner_up_key": "rajeev_lochan_narayan_singh",
+      "runner_up_name": "Rajeev Lochan Narayan Singh",
+      "runner_up_votes": 42749,
+      "margin": 35634,
+      "focus_key": "anant_kumar_singh",
+      "focus_name": "Anant Kumar Singh",
+      "focus_votes": 78383,
+      "focus_share_pct": 54.66,
+      "candidates": [
+        {
+          "key": "anant_kumar_singh",
+          "name": "Anant Kumar Singh",
+          "party": "RJD",
+          "color": "#1a6b3c",
+          "evm_votes": 78383,
+          "grand_votes": 78721,
+          "booths_won": 293
+        },
+        {
+          "key": "dilraj_raushan",
+          "name": "Dilraj Raushan",
+          "party": "RLSP",
+          "color": "#2563eb",
+          "evm_votes": 3993,
+          "grand_votes": 4007,
+          "booths_won": 5
+        },
+        {
+          "key": "rajeev_lochan_narayan_singh",
+          "name": "Rajeev Lochan Narayan Singh",
+          "party": "JD(U)",
+          "color": "#7c3aed",
+          "evm_votes": 42749,
+          "grand_votes": 42964,
+          "booths_won": 91
+        },
+        {
+          "key": "suresh_singh_nishad",
+          "name": "Suresh Singh Nishad",
+          "party": "LJP",
+          "color": "#0891b2",
+          "evm_votes": 13299,
+          "grand_votes": 13331,
+          "booths_won": 18
+        },
+        {
+          "key": "ashok_kumar",
+          "name": "Ashok Kumar",
+          "party": "Independent",
+          "color": "#dc2626",
+          "evm_votes": 827,
+          "grand_votes": 831,
+          "booths_won": 0
+        },
+        {
+          "key": "doctor_vinay_kumar",
+          "name": "Doctor Vinay Kumar",
+          "party": "Independent",
+          "color": "#ea580c",
+          "evm_votes": 1096,
+          "grand_votes": 1101,
+          "booths_won": 0
+        },
+        {
+          "key": "dr_dharambir_kumar",
+          "name": "Dr. Dharambir Kumar",
+          "party": "Independent",
+          "color": "#7c3aed",
+          "evm_votes": 1722,
+          "grand_votes": 1723,
+          "booths_won": 1
+        },
+        {
+          "key": "ramesh_prasad",
+          "name": "Ramesh Prasad",
+          "party": "Independent",
+          "color": "#0891b2",
+          "evm_votes": 1341,
+          "grand_votes": 1343,
+          "booths_won": 0
+        }
+      ]
+    },
+    {
+      "year": 2025,
+      "election_id": "bihar-vs-2025",
+      "name": "Bihar Vidhan Sabha 2025",
+      "electors_total": null,
+      "total_valid": 179786,
+      "grand_total": 184384,
+      "nota": 4598,
+      "booth_count": 342,
+      "winner_key": "anant_kumar_singh",
+      "winner_name": "Anant Kumar Singh",
+      "winner_party": "JD(U)",
+      "winner_votes": 91135,
+      "winner_share_pct": 50.69,
+      "runner_up_key": "veena_devi",
+      "runner_up_name": "Veena Devi",
+      "runner_up_votes": 63022,
+      "margin": 28113,
+      "focus_key": "anant_kumar_singh",
+      "focus_name": "Anant Kumar Singh",
+      "focus_votes": 91135,
+      "focus_share_pct": 50.69,
+      "candidates": [
+        {
+          "key": "anant_kumar_singh",
+          "name": "Anant Kumar Singh",
+          "party": "JD(U)",
+          "color": "#1a6b3c",
+          "evm_votes": 91135,
+          "booths_won": 231
+        },
+        {
+          "key": "rajesh_kumar_ratnakar",
+          "name": "Dr. Rajesh Kumar Ratnakar",
+          "party": "IND",
+          "color": "#6b7280",
+          "evm_votes": 2098,
+          "booths_won": 0
+        },
+        {
+          "key": "veena_devi",
+          "name": "Veena Devi",
+          "party": "RJD",
+          "color": "#16a34a",
+          "evm_votes": 63022,
+          "booths_won": 87
+        },
+        {
+          "key": "priyadarshi_piyush",
+          "name": "Priyadarshi Piyush",
+          "party": "INC",
+          "color": "#2563eb",
+          "evm_votes": 19315,
+          "booths_won": 24
+        },
+        {
+          "key": "manju_kumari",
+          "name": "Manju Kumari",
+          "party": "IND",
+          "color": "#a855f7",
+          "evm_votes": 865,
+          "booths_won": 0
+        },
+        {
+          "key": "rahul_kumar",
+          "name": "Rahul Kumar",
+          "party": "IND",
+          "color": "#f59e0b",
+          "evm_votes": 1132,
+          "booths_won": 0
+        },
+        {
+          "key": "anil_kumar",
+          "name": "Anil Kumar",
+          "party": "IND",
+          "color": "#ec4899",
+          "evm_votes": 1389,
+          "booths_won": 0
+        },
+        {
+          "key": "vikash_kumar",
+          "name": "Vikash Kumar",
+          "party": "IND",
+          "color": "#14b8a6",
+          "evm_votes": 830,
+          "booths_won": 0
+        }
+      ]
+    }
+  ],
+  "narrative": [
+    "Anant Kumar Singh won Mokama in 2015, 2020, and 2025 with EVM vote shares of 38.2%, 54.66%, and 50.69% respectively.",
+    "Main rivals: Neeraj Kumar (2015), Rajeev Lochan Narayan Singh (2020), Veena Devi (2025).",
+    "Polling units on Form 20: 244 (2015), 408 rows (2020, includes A/A), 342 (2025). Booth numbers are not 1:1 across years."
+  ]
+}

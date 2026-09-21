@@ -1,0 +1,282 @@
+@import "tailwindcss";
+
+/* Class-based dark mode (ThemeSwitch sets .dark on <html>) */
+@custom-variant dark (&:where(.dark, .dark *));
+
+:root {
+  --background: #ffffff;
+  --foreground: #171717;
+  color-scheme: light;
+}
+
+html.dark {
+  --background: #0a0a0a;
+  --foreground: #ededed;
+  color-scheme: dark;
+}
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --font-sans: var(--font-geist-sans), var(--font-noto-deva), system-ui, sans-serif;
+  --font-mono: var(--font-geist-mono);
+}
+
+body {
+  background: var(--background);
+  color: var(--foreground);
+  font-family: var(--font-geist-sans), var(--font-noto-deva), system-ui,
+    sans-serif;
+}
+
+/* Avoid flash: optional inline script sets class before paint; until then light */
+html:not(.dark):not(.light) {
+  color-scheme: light;
+}
+
+/* —— Hindi: keep Devanagari conjuncts intact ——
+   MapLibre symbol labels cannot use CSS fonts for Hindi (glyph PBF only),
+   so place names use HTML markers (.kshetra-place-label-hi) instead.
+   Also: letter-spacing / uppercase breaks Hindi shaping. */
+html[lang="hi"] body {
+  font-family: var(--font-noto-deva), var(--font-noto-sans), system-ui,
+    sans-serif;
+  line-height: 1.55;
+  letter-spacing: normal;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  word-break: normal;
+  overflow-wrap: anywhere;
+}
+
+html[lang="hi"] .tracking-tighter,
+html[lang="hi"] .tracking-tight,
+html[lang="hi"] .tracking-normal,
+html[lang="hi"] .tracking-wide,
+html[lang="hi"] .tracking-wider,
+html[lang="hi"] .tracking-widest,
+html[lang="hi"] [class*="tracking-\\["] {
+  letter-spacing: normal !important;
+}
+
+html[lang="hi"] .uppercase {
+  text-transform: none !important;
+}
+
+html[lang="hi"] .truncate {
+  /* Avoid mid-akshara clipping where possible; still single-line ellipsis */
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+/* HTML place labels on the map (Hindi) — CSS font, not MapLibre glyphs */
+.kshetra-place-label-hi {
+  font-family: var(--font-noto-deva), var(--font-noto-sans), system-ui, sans-serif;
+  font-size: 11px;
+  font-weight: 600;
+  line-height: 1.3;
+  letter-spacing: normal !important;
+  color: #0f172a;
+  background: rgba(255, 255, 255, 0.9);
+  border: 1px solid rgba(15, 23, 42, 0.12);
+  border-radius: 6px;
+  padding: 2px 6px 3px;
+  max-width: 9.5rem;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  pointer-events: none;
+  box-shadow: 0 1px 3px rgba(15, 23, 42, 0.14);
+  transform: translateY(6px);
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+
+/* Map chrome: force Devanagari-safe metrics when Hindi is on */
+html[lang="hi"] .kshetra-ui-hi,
+html.lang-hi .kshetra-ui-hi {
+  font-family: var(--font-noto-deva), var(--font-noto-sans), system-ui,
+    sans-serif;
+  letter-spacing: normal !important;
+  text-transform: none !important;
+  line-height: 1.45;
+}
+
+/* Panel / sheet body copy under Hindi */
+html[lang="hi"] aside,
+html[lang="hi"] .maplibregl-popup-content,
+html.lang-hi aside {
+  font-family: var(--font-noto-deva), var(--font-noto-sans), system-ui,
+    sans-serif;
+  letter-spacing: normal;
+}
+
+html[lang="hi"] aside button,
+html[lang="hi"] aside label,
+html[lang="hi"] aside input,
+html[lang="hi"] aside p,
+html[lang="hi"] aside h1,
+html[lang="hi"] aside h2,
+html[lang="hi"] aside h3,
+html.lang-hi aside button,
+html.lang-hi aside label {
+  letter-spacing: normal !important;
+}
+
+/* Clean up MapLibre popup chrome so our card is the only UI */
+.kshetra-popup .maplibregl-popup-content {
+  padding: 0;
+  background: transparent;
+  box-shadow: none;
+  border-radius: 0;
+}
+
+.kshetra-popup .maplibregl-popup-tip {
+  display: none;
+}
+
+/* Thin scrollbar on the control rail */
+aside::-webkit-scrollbar,
+aside *::-webkit-scrollbar {
+  width: 6px;
+}
+aside::-webkit-scrollbar-thumb,
+aside *::-webkit-scrollbar-thumb {
+  background: rgba(255, 255, 255, 0.15);
+  border-radius: 999px;
+}
+aside::-webkit-scrollbar-track,
+aside *::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+/* MapLibre attribution/nav less intrusive on small screens */
+@media (max-width: 767px) {
+  .maplibregl-ctrl-bottom-right {
+    bottom: 8px;
+    right: 8px;
+  }
+  .maplibregl-ctrl-attrib {
+    font-size: 9px;
+    max-width: 55vw;
+  }
+  .maplibregl-ctrl-group button {
+    width: 32px !important;
+    height: 32px !important;
+  }
+}
+
+/* While booth bottom-sheet is open: kill browser pull-to-refresh / overscroll */
+html.kshetra-sheet-open,
+html.kshetra-sheet-open body {
+  overscroll-behavior: none;
+  overscroll-behavior-y: none;
+  /* iOS rubber-band */
+  overflow: hidden;
+  touch-action: none;
+  height: 100%;
+  position: fixed;
+  width: 100%;
+  left: 0;
+  right: 0;
+}
+
+/* —— Dossier print / PDF export (Module 2, B-Task 10) ——
+   `window.print()` (DownloadPdfButton.tsx) / the browser's own PDF export
+   both run through Chromium's print pipeline, so `:has()` support is a safe
+   bet here even though it's not used anywhere else in this stylesheet.
+
+   Nav-hiding scope decision: `AcWorkspaceNav` (Module-1's shared nav) is
+   rendered by `AcLayout` as a DOM SIBLING of the dossier route's own <main>
+   (both are children of AcLayout's wrapper div — see layout.tsx /
+   AcWorkspaceNav.tsx), not a descendant of anything the dossier page
+   renders. A plain descendant selector from a dossier wrapper can't reach
+   it. Rather than broadening the hide to every /ac/[acNo]/* page (which
+   would also strip nav from printed map/history views), every rule below is
+   scoped with `body:has(.dossier-page)` — reaching up from body, matching
+   only when dossier content is actually present, leaving map/history print
+   output untouched. `@page` is the one rule that can't be scoped this way
+   (page rules don't support selector conditions); A4 + 14mm margins are a
+   reasonable app-wide print default regardless. */
+@media print {
+  @page {
+    size: A4;
+    margin: 14mm;
+  }
+
+  /* Shared app nav + this page's own "Download PDF" button/controls. */
+  body:has(.dossier-page) header,
+  body:has(.dossier-page) .dossier-print-hide {
+    display: none !important;
+  }
+
+  /* Each of the six dossier sections (Cover/Snapshot/Social/Economic/
+     Political/Sources — see DossierSection.tsx) gets its own printed page. */
+  .dossier-page {
+    break-after: page;
+  }
+
+  /* Recharts SVG output doesn't print reliably — same reason live MapLibre
+     is never embedded in print (see PoliticalSection.tsx's map block).
+     Hook left bare by VoteShareChart.tsx for this task to fill in. */
+  .dossier-chart-no-print {
+    display: none !important;
+  }
+
+  /* Force light background / dark text regardless of the viewer's
+     ThemeProvider selection (`.dark` class toggled on <html> — see
+     src/lib/theme/ThemeProvider.tsx). ThemeProvider itself is NOT modified;
+     instead each Tailwind `dark:` utility actually used across the dossier
+     tree (verified by grepping every dossier component) is overridden here
+     back to its paired LIGHT-mode value, at higher specificity
+     (`body:has(.dossier-page) .dark\:X` beats the compiled
+     `.dark\:X:where(.dark, .dark *)` rule's specificity) — not by trying to
+     strip the `.dark` class, which CSS can't do. */
+  body:has(.dossier-page) {
+    background: #ffffff !important;
+    color: #171717 !important;
+    color-scheme: light !important;
+  }
+
+  /* text-* */
+  body:has(.dossier-page) .dark\:text-zinc-50 { color: #18181b !important; }
+  body:has(.dossier-page) .dark\:text-zinc-200 { color: #27272a !important; }
+  body:has(.dossier-page) .dark\:text-zinc-300 { color: #3f3f46 !important; }
+  body:has(.dossier-page) .dark\:text-zinc-400 { color: #71717a !important; }
+  body:has(.dossier-page) .dark\:text-zinc-500 { color: #a1a1aa !important; }
+  body:has(.dossier-page) .dark\:text-emerald-300 { color: #065f46 !important; }
+  body:has(.dossier-page) .dark\:text-emerald-400 { color: #047857 !important; }
+  body:has(.dossier-page) .dark\:text-amber-300 { color: #92400e !important; }
+  body:has(.dossier-page) .dark\:text-orange-300 { color: #9a3412 !important; }
+  body:has(.dossier-page) .dark\:text-blue-300 { color: #1e40af !important; }
+
+  /* border-* */
+  body:has(.dossier-page) .dark\:border-zinc-700 { border-color: #d4d4d8 !important; }
+  body:has(.dossier-page) .dark\:border-zinc-800 { border-color: #e4e4e7 !important; }
+  body:has(.dossier-page) .dark\:border-zinc-900 { border-color: #f4f4f5 !important; }
+  body:has(.dossier-page) .dark\:border-amber-700 { border-color: #fcd34d !important; }
+  body:has(.dossier-page) .dark\:border-orange-700 { border-color: #fdba74 !important; }
+  body:has(.dossier-page) .dark\:border-emerald-700 { border-color: #6ee7b7 !important; }
+  body:has(.dossier-page) .dark\:border-blue-700 { border-color: #93c5fd !important; }
+
+  /* bg-* — includes the granularity chips (Social section) and status
+     badges (Economic section's projects[].status) called out by the spec. */
+  body:has(.dossier-page) .dark\:bg-zinc-800 { background-color: #f4f4f5 !important; }
+  body:has(.dossier-page) .dark\:bg-zinc-900 { background-color: #ffffff !important; }
+  body:has(.dossier-page) .dark\:bg-zinc-950 { background-color: #fafafa !important; }
+  body:has(.dossier-page) .dark\:bg-amber-950 { background-color: #fffbeb !important; }
+  body:has(.dossier-page) .dark\:bg-orange-950 { background-color: #fff7ed !important; }
+  body:has(.dossier-page) .dark\:bg-emerald-950 { background-color: #ecfdf5 !important; }
+  body:has(.dossier-page) .dark\:bg-blue-950 { background-color: #eff6ff !important; }
+
+  /* Chromium (window.print()/PDF export) drops background colors by
+     default unless told otherwise — this is what actually keeps the
+     granularity chips / status badges' fills (and any other
+     background-colored UI) visible in the printed output. */
+  .dossier-page,
+  .dossier-page * {
+    -webkit-print-color-adjust: exact !important;
+    print-color-adjust: exact !important;
+  }
+}

@@ -1,0 +1,5 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" role="img" aria-label="LJP">
+  <rect width="64" height="64" rx="10" fill="#7c3aed"/>
+  <!-- Bungalow -->
+  <path fill="#fff" d="M32 12L10 30h8v20h12V38h4v12h12V30h8L32 12zm0 6.5l12 10V46H36V34H28v12H20V28.5l12-10z"/>
+</svg>

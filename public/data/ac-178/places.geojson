@@ -1,0 +1,2244 @@
+{
+  "type": "FeatureCollection",
+  "name": "Mokama AC-178 Real Places",
+  "description": "Real landmarks (OSM/Nominatim/Wikipedia GCPs) + multi-booth place centroids",
+  "features": [
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          85.91444,
+          25.39194
+        ]
+      },
+      "properties": {
+        "id": "mokama-jn",
+        "name": "Mokama Junction (MKA)",
+        "kind": "railway",
+        "source": "wikipedia",
+        "booth_count": 35,
+        "nearest_ps": null,
+        "booth_nos": [
+          156,
+          157,
+          159,
+          166,
+          167,
+          168,
+          169,
+          170,
+          171,
+          174,
+          175,
+          176,
+          177,
+          178,
+          179,
+          180,
+          181,
+          182,
+          183,
+          184,
+          185,
+          186,
+          187,
+          188,
+          189,
+          190,
+          191,
+          192,
+          193,
+          194,
+          195,
+          196,
+          197,
+          198,
+          199
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          85.91768,
+          25.39619
+        ]
+      },
+      "properties": {
+        "id": "mokama-town",
+        "name": "Mokama town",
+        "kind": "town",
+        "source": "latlong/gcp",
+        "booth_count": 34,
+        "nearest_ps": null,
+        "booth_nos": [
+          156,
+          157,
+          159,
+          166,
+          167,
+          168,
+          169,
+          170,
+          171,
+          174,
+          175,
+          178,
+          179,
+          180,
+          181,
+          182,
+          183,
+          184,
+          186,
+          187,
+          188,
+          189,
+          190,
+          191,
+          192,
+          193,
+          194,
+          195,
+          196,
+          197,
+          198,
+          199,
+          200,
+          202
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          85.98735,
+          25.36592
+        ]
+      },
+      "properties": {
+        "id": "hathidah-jn",
+        "name": "Hathidah Junction",
+        "kind": "railway",
+        "source": "nominatim",
+        "booth_count": 13,
+        "nearest_ps": null,
+        "booth_nos": [
+          228,
+          229,
+          230,
+          232,
+          233,
+          234,
+          235,
+          236,
+          246,
+          247,
+          249,
+          251,
+          252
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          85.99243,
+          25.35957
+        ]
+      },
+      "properties": {
+        "id": "maranchi",
+        "name": "Maranchi",
+        "kind": "village",
+        "source": "nominatim",
+        "booth_count": 14,
+        "nearest_ps": null,
+        "booth_nos": [
+          228,
+          233,
+          235,
+          236,
+          240,
+          241,
+          245,
+          246,
+          247,
+          248,
+          249,
+          250,
+          251,
+          252
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          85.8742,
+          25.34063
+        ]
+      },
+      "properties": {
+        "id": "ghoswari",
+        "name": "Ghoswari",
+        "kind": "village",
+        "source": "nominatim",
+        "booth_count": 8,
+        "nearest_ps": null,
+        "booth_nos": [
+          294,
+          295,
+          296,
+          297,
+          298,
+          299,
+          300,
+          308
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          85.80365,
+          25.48196
+        ]
+      },
+      "properties": {
+        "id": "punarakh",
+        "name": "Punarakh",
+        "kind": "village",
+        "source": "nominatim",
+        "booth_count": 16,
+        "nearest_ps": null,
+        "booth_nos": [
+          9,
+          10,
+          12,
+          13,
+          14,
+          15,
+          16,
+          17,
+          18,
+          19,
+          23,
+          25,
+          32,
+          33,
+          34,
+          100
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          85.7784,
+          25.48252
+        ]
+      },
+      "properties": {
+        "id": "lemuabad",
+        "name": "Lemuabad Halt",
+        "kind": "railway",
+        "source": "nominatim",
+        "booth_count": 9,
+        "nearest_ps": null,
+        "booth_nos": [
+          5,
+          6,
+          7,
+          26,
+          27,
+          28,
+          29,
+          30,
+          31
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          85.94968,
+          25.38029
+        ]
+      },
+      "properties": {
+        "id": "aunta",
+        "name": "Aunta Halt",
+        "kind": "railway",
+        "source": "nominatim",
+        "booth_count": 20,
+        "nearest_ps": null,
+        "booth_nos": [
+          163,
+          164,
+          165,
+          204,
+          207,
+          208,
+          209,
+          210,
+          211,
+          212,
+          213,
+          214,
+          215,
+          216,
+          217,
+          218,
+          219,
+          220,
+          221,
+          223
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          85.84115,
+          25.45453
+        ]
+      },
+      "properties": {
+        "id": "kanhaipur",
+        "name": "Kanhaipur Halt",
+        "kind": "railway",
+        "source": "nominatim",
+        "booth_count": 8,
+        "nearest_ps": null,
+        "booth_nos": [
+          117,
+          118,
+          119,
+          120,
+          122,
+          123,
+          124,
+          125
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          85.82796,
+          25.47223
+        ]
+      },
+      "properties": {
+        "id": "mekra",
+        "name": "Mekra Halt",
+        "kind": "railway",
+        "source": "nominatim",
+        "booth_count": 21,
+        "nearest_ps": null,
+        "booth_nos": [
+          11,
+          14,
+          15,
+          18,
+          19,
+          20,
+          21,
+          22,
+          24,
+          25,
+          107,
+          108,
+          109,
+          110,
+          111,
+          112,
+          113,
+          114,
+          115,
+          116,
+          121
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          86.00064,
+          25.33079
+        ]
+      },
+      "properties": {
+        "id": "rampur-dumra",
+        "name": "Rampur Dumra station",
+        "kind": "railway",
+        "source": "nominatim",
+        "booth_count": 11,
+        "nearest_ps": null,
+        "booth_nos": [
+          258,
+          260,
+          263,
+          264,
+          265,
+          266,
+          267,
+          268,
+          269,
+          270,
+          271
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          85.79403,
+          25.42733
+        ]
+      },
+      "properties": {
+        "id": "pandarak",
+        "name": "Pandarak",
+        "kind": "town",
+        "source": "nominatim",
+        "booth_count": 3,
+        "nearest_ps": null,
+        "booth_nos": [
+          37,
+          38,
+          54
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          85.941,
+          25.393
+        ]
+      },
+      "properties": {
+        "id": "mokama-ghat",
+        "name": "Mokama Ghat",
+        "kind": "place",
+        "source": "booth_cluster",
+        "booth_count": 18,
+        "nearest_ps": null,
+        "booth_nos": [
+          160,
+          161,
+          162,
+          163,
+          164,
+          165,
+          200,
+          201,
+          202,
+          203,
+          204,
+          205,
+          206,
+          207,
+          208,
+          209,
+          211,
+          212
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          85.7628212857143,
+          25.488471142857144
+        ]
+      },
+      "properties": {
+        "id": "place:rail-inglis",
+        "name": "Rail Inglis",
+        "kind": "booth_place",
+        "booth_count": 7,
+        "nearest_ps": "Pandarakh PS",
+        "source": "booth_centroid",
+        "booth_nos": [
+          1,
+          2,
+          3,
+          5,
+          6,
+          7,
+          8
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          85.81483114285713,
+          25.48218757142857
+        ]
+      },
+      "properties": {
+        "id": "place:punarakh",
+        "name": "Punarakh",
+        "kind": "booth_place",
+        "booth_count": 7,
+        "nearest_ps": "Pandarakh PS",
+        "source": "booth_centroid",
+        "booth_nos": [
+          9,
+          11,
+          12,
+          15,
+          17,
+          32,
+          33
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          85.8129145,
+          25.480928
+        ]
+      },
+      "properties": {
+        "id": "place:chhaperatar",
+        "name": "Chhaperatar",
+        "kind": "booth_place",
+        "booth_count": 2,
+        "nearest_ps": "Pandarakh PS",
+        "source": "booth_centroid",
+        "booth_nos": [
+          10,
+          13
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          85.81588066666666,
+          25.479735333333334
+        ]
+      },
+      "properties": {
+        "id": "place:punarakh-punarakh",
+        "name": "PUNARAKH Punarakh",
+        "kind": "booth_place",
+        "booth_count": 3,
+        "nearest_ps": "Pandarakh PS",
+        "source": "booth_centroid",
+        "booth_nos": [
+          14,
+          16,
+          18
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          85.8132994,
+          25.474541800000004
+        ]
+      },
+      "properties": {
+        "id": "place:gopkita",
+        "name": "Gopkita",
+        "kind": "booth_place",
+        "booth_count": 5,
+        "nearest_ps": "Pandarakh PS",
+        "source": "booth_centroid",
+        "booth_nos": [
+          19,
+          23,
+          24,
+          25,
+          100
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          85.84947557142858,
+          25.454992428571426
+        ]
+      },
+      "properties": {
+        "id": "place:inglis",
+        "name": "Inglis",
+        "kind": "booth_place",
+        "booth_count": 7,
+        "nearest_ps": "Pandarakh PS",
+        "source": "booth_centroid",
+        "booth_nos": [
+          20,
+          21,
+          22,
+          107,
+          134,
+          135,
+          147
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          85.78400260000001,
+          25.486532399999998
+        ]
+      },
+      "properties": {
+        "id": "place:dargahitola",
+        "name": "Dargahitola",
+        "kind": "booth_place",
+        "booth_count": 5,
+        "nearest_ps": "Pandarakh PS",
+        "source": "booth_centroid",
+        "booth_nos": [
+          26,
+          27,
+          28,
+          30,
+          31
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          85.786642,
+          25.4267245
+        ]
+      },
+      "properties": {
+        "id": "place:sarhan-bharao",
+        "name": "Sarhan Bharao",
+        "kind": "booth_place",
+        "booth_count": 2,
+        "nearest_ps": "Pandarakh PS",
+        "source": "booth_centroid",
+        "booth_nos": [
+          37,
+          38
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          85.749809,
+          25.398628000000002
+        ]
+      },
+      "properties": {
+        "id": "place:math-dahanwa",
+        "name": "Math Dahanwa",
+        "kind": "booth_place",
+        "booth_count": 2,
+        "nearest_ps": "Samiyagarh PS",
+        "source": "booth_centroid",
+        "booth_nos": [
+          39,
+          42
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          85.74668,
+          25.399752
+        ]
+      },
+      "properties": {
+        "id": "place:mahadeo-math",
+        "name": "Mahadeo Math",
+        "kind": "booth_place",
+        "booth_count": 2,
+        "nearest_ps": "Bhadaur PS",
+        "source": "booth_centroid",
+        "booth_nos": [
+          40,
+          41
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          85.747301,
+          25.412653
+        ]
+      },
+      "properties": {
+        "id": "place:igha-bhuapur",
+        "name": "igha Bhuapur",
+        "kind": "booth_place",
+        "booth_count": 2,
+        "nearest_ps": "Bhadaur PS",
+        "source": "booth_centroid",
+        "booth_nos": [
+          43,
+          44
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          85.73602659999999,
+          25.372656199999998
+        ]
+      },
+      "properties": {
+        "id": "place:ajgara",
+        "name": "Ajgara",
+        "kind": "booth_place",
+        "booth_count": 5,
+        "nearest_ps": "Bhadaur PS",
+        "source": "booth_centroid",
+        "booth_nos": [
+          45,
+          77,
+          78,
+          79,
+          104
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          85.73328699999999,
+          25.393099999999997
+        ]
+      },
+      "properties": {
+        "id": "place:adampur",
+        "name": "Adampur",
+        "kind": "booth_place",
+        "booth_count": 2,
+        "nearest_ps": "Bhadaur PS",
+        "source": "booth_centroid",
+        "booth_nos": [
+          46,
+          47
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          85.7251,
+          25.422696
+        ]
+      },
+      "properties": {
+        "id": "place:kondi",
+        "name": "Kondi",
+        "kind": "booth_place",
+        "booth_count": 5,
+        "nearest_ps": "Bhadaur PS",
+        "source": "booth_centroid",
+        "booth_nos": [
+          48,
+          49,
+          50,
+          64,
+          65
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          85.7397175,
+          25.4222095
+        ]
+      },
+      "properties": {
+        "id": "place:manikpur",
+        "name": "Manikpur",
+        "kind": "booth_place",
+        "booth_count": 2,
+        "nearest_ps": "Bhadaur PS",
+        "source": "booth_centroid",
+        "booth_nos": [
+          55,
+          56
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          85.71103799999999,
+          25.397137
+        ]
+      },
+      "properties": {
+        "id": "place:kazi-hak",
+        "name": "Kazi hak",
+        "kind": "booth_place",
+        "booth_count": 3,
+        "nearest_ps": "Bhadaur PS",
+        "source": "booth_centroid",
+        "booth_nos": [
+          61,
+          66,
+          67
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          85.77282349999999,
+          25.392408
+        ]
+      },
+      "properties": {
+        "id": "place:beldari-bigha",
+        "name": "Beldari Bigha",
+        "kind": "booth_place",
+        "booth_count": 2,
+        "nearest_ps": "Samiyagarh PS",
+        "source": "booth_centroid",
+        "booth_nos": [
+          68,
+          69
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          85.77925833333332,
+          25.360382666666666
+        ]
+      },
+      "properties": {
+        "id": "place:rampur-khushal",
+        "name": "Rampur Khushal",
+        "kind": "booth_place",
+        "booth_count": 3,
+        "nearest_ps": "Samiyagarh PS",
+        "source": "booth_centroid",
+        "booth_nos": [
+          72,
+          73,
+          75
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          85.7725245,
+          25.362301000000002
+        ]
+      },
+      "properties": {
+        "id": "place:sildihi-rampur",
+        "name": "Sildihi Rampur",
+        "kind": "booth_place",
+        "booth_count": 2,
+        "nearest_ps": "Samiyagarh PS",
+        "source": "booth_centroid",
+        "booth_nos": [
+          74,
+          81
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          85.74796233333332,
+          25.35071566666667
+        ]
+      },
+      "properties": {
+        "id": "place:bakawan-sadiqpur",
+        "name": "Bakawan Sadiqpur",
+        "kind": "booth_place",
+        "booth_count": 3,
+        "nearest_ps": "Samiyagarh PS",
+        "source": "booth_centroid",
+        "booth_nos": [
+          83,
+          84,
+          92
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          85.74807,
+          25.346995
+        ]
+      },
+      "properties": {
+        "id": "place:janpur",
+        "name": "Janpur",
+        "kind": "booth_place",
+        "booth_count": 2,
+        "nearest_ps": "Samiyagarh PS",
+        "source": "booth_centroid",
+        "booth_nos": [
+          85,
+          91
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          85.7572005,
+          25.329009499999998
+        ]
+      },
+      "properties": {
+        "id": "place:sirsi",
+        "name": "Sirsi",
+        "kind": "booth_place",
+        "booth_count": 2,
+        "nearest_ps": "Samiyagarh PS",
+        "source": "booth_centroid",
+        "booth_nos": [
+          86,
+          87
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          85.70946357142859,
+          25.32690342857143
+        ]
+      },
+      "properties": {
+        "id": "place:darwe-bhadaur",
+        "name": "Darwe Bhadaur",
+        "kind": "booth_place",
+        "booth_count": 7,
+        "nearest_ps": "Bhadaur PS",
+        "source": "booth_centroid",
+        "booth_nos": [
+          88,
+          89,
+          94,
+          95,
+          96,
+          97,
+          105
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          85.7601035,
+          25.3983895
+        ]
+      },
+      "properties": {
+        "id": "place:maya-bigha",
+        "name": "Maya Bigha",
+        "kind": "booth_place",
+        "booth_count": 2,
+        "nearest_ps": "Bhadaur PS",
+        "source": "booth_centroid",
+        "booth_nos": [
+          98,
+          99
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          85.771848,
+          25.423366
+        ]
+      },
+      "properties": {
+        "id": "place:lalpura",
+        "name": "Lalpura",
+        "kind": "booth_place",
+        "booth_count": 2,
+        "nearest_ps": "Bhadaur PS",
+        "source": "booth_centroid",
+        "booth_nos": [
+          101,
+          103
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          85.8292604,
+          25.4718589
+        ]
+      },
+      "properties": {
+        "id": "place:shahabad-mekra",
+        "name": "Shahabad Mekra",
+        "kind": "booth_place",
+        "booth_count": 10,
+        "nearest_ps": "Pandarakh PS",
+        "source": "booth_centroid",
+        "booth_nos": [
+          108,
+          109,
+          110,
+          111,
+          112,
+          113,
+          114,
+          115,
+          116,
+          121
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          85.84488925000001,
+          25.4561455
+        ]
+      },
+      "properties": {
+        "id": "place:kanhaipur",
+        "name": "Kanhaipur",
+        "kind": "booth_place",
+        "booth_count": 4,
+        "nearest_ps": "Pandarakh PS",
+        "source": "booth_centroid",
+        "booth_nos": [
+          117,
+          118,
+          119,
+          120
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          85.850726,
+          25.460415249999997
+        ]
+      },
+      "properties": {
+        "id": "place:gangaprasad",
+        "name": "Gangaprasad",
+        "kind": "booth_place",
+        "booth_count": 4,
+        "nearest_ps": "Pandarakh PS",
+        "source": "booth_centroid",
+        "booth_nos": [
+          122,
+          123,
+          124,
+          125
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          85.85958375000001,
+          25.452428750000003
+        ]
+      },
+      "properties": {
+        "id": "place:sultanpur",
+        "name": "Sultanpur",
+        "kind": "booth_place",
+        "booth_count": 4,
+        "nearest_ps": "Pandarakh PS",
+        "source": "booth_centroid",
+        "booth_nos": [
+          126,
+          127,
+          128,
+          130
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          85.87428771428573,
+          25.431091142857145
+        ]
+      },
+      "properties": {
+        "id": "place:mor",
+        "name": "Mor",
+        "kind": "booth_place",
+        "booth_count": 7,
+        "nearest_ps": "Ghoshwari PS",
+        "source": "booth_centroid",
+        "booth_nos": [
+          131,
+          132,
+          133,
+          136,
+          137,
+          138,
+          139
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          85.88708425000002,
+          25.414557750000004
+        ]
+      },
+      "properties": {
+        "id": "place:bindtoli-barahpur",
+        "name": "Bindtoli Barahpur",
+        "kind": "booth_place",
+        "booth_count": 8,
+        "nearest_ps": "Ghoshwari PS",
+        "source": "booth_centroid",
+        "booth_nos": [
+          140,
+          141,
+          142,
+          143,
+          144,
+          145,
+          146,
+          148
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          85.89694971428571,
+          25.405475428571428
+        ]
+      },
+      "properties": {
+        "id": "place:seonar",
+        "name": "Seonar",
+        "kind": "booth_place",
+        "booth_count": 7,
+        "nearest_ps": "Ghoshwari PS",
+        "source": "booth_centroid",
+        "booth_nos": [
+          149,
+          150,
+          151,
+          152,
+          153,
+          154,
+          155
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          85.9111645,
+          25.3970645
+        ]
+      },
+      "properties": {
+        "id": "place:chatarpura",
+        "name": "Chatarpura",
+        "kind": "booth_place",
+        "booth_count": 2,
+        "nearest_ps": "Ghoshwari PS",
+        "source": "booth_centroid",
+        "booth_nos": [
+          156,
+          157
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          85.9159288148148,
+          25.392139851851848
+        ]
+      },
+      "properties": {
+        "id": "place:mokama",
+        "name": "Mokama",
+        "kind": "booth_place",
+        "booth_count": 27,
+        "nearest_ps": "Ghoshwari PS",
+        "source": "booth_centroid",
+        "booth_nos": [
+          158,
+          159,
+          166,
+          167,
+          168,
+          169,
+          170,
+          171,
+          174,
+          175,
+          176,
+          177,
+          178,
+          179,
+          180,
+          181,
+          182,
+          183,
+          184,
+          186,
+          187,
+          188,
+          189,
+          190,
+          196,
+          197,
+          198
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          85.9409215,
+          25.393066
+        ]
+      },
+      "properties": {
+        "id": "place:mokama-ghat",
+        "name": "Mokama Ghat",
+        "kind": "booth_place",
+        "booth_count": 2,
+        "nearest_ps": "Hathidah PS",
+        "source": "booth_centroid",
+        "booth_nos": [
+          160,
+          161
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          85.93976860000001,
+          25.3857398
+        ]
+      },
+      "properties": {
+        "id": "place:lakhanchand",
+        "name": "Lakhanchand",
+        "kind": "booth_place",
+        "booth_count": 5,
+        "nearest_ps": "Hathidah PS",
+        "source": "booth_centroid",
+        "booth_nos": [
+          162,
+          163,
+          164,
+          165,
+          212
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          85.902897,
+          25.379128666666663
+        ]
+      },
+      "properties": {
+        "id": "place:indranagar",
+        "name": "Indranagar",
+        "kind": "booth_place",
+        "booth_count": 3,
+        "nearest_ps": "Ghoshwari PS",
+        "source": "booth_centroid",
+        "booth_nos": [
+          172,
+          173,
+          185
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          85.92602749999999,
+          25.39258175
+        ]
+      },
+      "properties": {
+        "id": "place:sahbajpur-chak",
+        "name": "Sahbajpur Chak",
+        "kind": "booth_place",
+        "booth_count": 12,
+        "nearest_ps": "Ghoshwari PS",
+        "source": "booth_centroid",
+        "booth_nos": [
+          191,
+          192,
+          193,
+          194,
+          195,
+          199,
+          200,
+          201,
+          202,
+          203,
+          205,
+          206
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          85.947171,
+          25.3847035
+        ]
+      },
+      "properties": {
+        "id": "place:chak-sikhari",
+        "name": "Chak Sikhari",
+        "kind": "booth_place",
+        "booth_count": 2,
+        "nearest_ps": "Hathidah PS",
+        "source": "booth_centroid",
+        "booth_nos": [
+          207,
+          208
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          85.9411525,
+          25.384279
+        ]
+      },
+      "properties": {
+        "id": "place:panchmahal-chak",
+        "name": "Panchmahal Chak",
+        "kind": "booth_place",
+        "booth_count": 2,
+        "nearest_ps": "Hathidah PS",
+        "source": "booth_centroid",
+        "booth_nos": [
+          209,
+          211
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          85.96123266666666,
+          25.37856066666667
+        ]
+      },
+      "properties": {
+        "id": "place:majam-hak",
+        "name": "Majam hak",
+        "kind": "booth_place",
+        "booth_count": 3,
+        "nearest_ps": "Hathidah PS",
+        "source": "booth_centroid",
+        "booth_nos": [
+          210,
+          220,
+          223
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          85.95313499999999,
+          25.3806835
+        ]
+      },
+      "properties": {
+        "id": "place:ghat-auta",
+        "name": "Ghat Auta",
+        "kind": "booth_place",
+        "booth_count": 6,
+        "nearest_ps": "Hathidah PS",
+        "source": "booth_centroid",
+        "booth_nos": [
+          213,
+          214,
+          215,
+          216,
+          218,
+          219
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          85.95661899999999,
+          25.379614500000002
+        ]
+      },
+      "properties": {
+        "id": "place:murarpur",
+        "name": "Murarpur",
+        "kind": "booth_place",
+        "booth_count": 2,
+        "nearest_ps": "Hathidah PS",
+        "source": "booth_centroid",
+        "booth_nos": [
+          217,
+          221
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          85.97008840000001,
+          25.375382
+        ]
+      },
+      "properties": {
+        "id": "place:dariyapur-dharampur",
+        "name": "Dariyapur Dharampur",
+        "kind": "booth_place",
+        "booth_count": 5,
+        "nearest_ps": "Hathidah PS",
+        "source": "booth_centroid",
+        "booth_nos": [
+          222,
+          224,
+          225,
+          226,
+          227
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          85.9854696,
+          25.370611399999998
+        ]
+      },
+      "properties": {
+        "id": "place:buzurg-hathidah",
+        "name": "Buzurg Hathidah",
+        "kind": "booth_place",
+        "booth_count": 5,
+        "nearest_ps": "Hathidah PS",
+        "source": "booth_centroid",
+        "booth_nos": [
+          228,
+          233,
+          234,
+          235,
+          236
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          85.9766385,
+          25.371187749999997
+        ]
+      },
+      "properties": {
+        "id": "place:hathidah-khurd",
+        "name": "Hathidah Khurd",
+        "kind": "booth_place",
+        "booth_count": 4,
+        "nearest_ps": "Hathidah PS",
+        "source": "booth_centroid",
+        "booth_nos": [
+          229,
+          230,
+          231,
+          232
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          86.01064033333334,
+          25.345918666666666
+        ]
+      },
+      "properties": {
+        "id": "place:maranchi-inglish",
+        "name": "Maranchi Inglish",
+        "kind": "booth_place",
+        "booth_count": 3,
+        "nearest_ps": "Maranchi PS",
+        "source": "booth_centroid",
+        "booth_nos": [
+          237,
+          238,
+          239
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          86.0021048181818,
+          25.35427945454546
+        ]
+      },
+      "properties": {
+        "id": "place:maranchi-tajpur",
+        "name": "Maranchi Tajpur",
+        "kind": "booth_place",
+        "booth_count": 11,
+        "nearest_ps": "Maranchi PS",
+        "source": "booth_centroid",
+        "booth_nos": [
+          240,
+          241,
+          242,
+          243,
+          244,
+          245,
+          248,
+          249,
+          250,
+          251,
+          252
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          85.99677650000001,
+          25.360607
+        ]
+      },
+      "properties": {
+        "id": "place:hathidah",
+        "name": "Hathidah",
+        "kind": "booth_place",
+        "booth_count": 2,
+        "nearest_ps": "Maranchi PS",
+        "source": "booth_centroid",
+        "booth_nos": [
+          246,
+          247
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          86.036415,
+          25.3611395
+        ]
+      },
+      "properties": {
+        "id": "place:mahaji-maranchi",
+        "name": "Mahaji Maranchi",
+        "kind": "booth_place",
+        "booth_count": 2,
+        "nearest_ps": "Maranchi PS",
+        "source": "booth_centroid",
+        "booth_nos": [
+          254,
+          255
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          86.0153306,
+          25.3243518
+        ]
+      },
+      "properties": {
+        "id": "place:hemja",
+        "name": "Hemja",
+        "kind": "booth_place",
+        "booth_count": 5,
+        "nearest_ps": "Pachmahla PS",
+        "source": "booth_centroid",
+        "booth_nos": [
+          256,
+          257,
+          259,
+          262,
+          263
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          86.01320460000001,
+          25.3274726
+        ]
+      },
+      "properties": {
+        "id": "place:rampur-dumra",
+        "name": "Rampur Dumra",
+        "kind": "booth_place",
+        "booth_count": 5,
+        "nearest_ps": "Pachmahla PS",
+        "source": "booth_centroid",
+        "booth_nos": [
+          258,
+          260,
+          261,
+          268,
+          269
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          86.00719950000001,
+          25.33482575
+        ]
+      },
+      "properties": {
+        "id": "place:sherpur-badpur",
+        "name": "Sherpur Badpur",
+        "kind": "booth_place",
+        "booth_count": 4,
+        "nearest_ps": "Maranchi PS",
+        "source": "booth_centroid",
+        "booth_nos": [
+          264,
+          265,
+          266,
+          267
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          86.01669333333332,
+          25.317391333333333
+        ]
+      },
+      "properties": {
+        "id": "place:kishunpur",
+        "name": "Kishunpur",
+        "kind": "booth_place",
+        "booth_count": 3,
+        "nearest_ps": "Pachmahla PS",
+        "source": "booth_centroid",
+        "booth_nos": [
+          272,
+          273,
+          278
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          86.01612650000001,
+          25.31306025
+        ]
+      },
+      "properties": {
+        "id": "place:panchmahalla",
+        "name": "Panchmahalla",
+        "kind": "booth_place",
+        "booth_count": 4,
+        "nearest_ps": "Pachmahla PS",
+        "source": "booth_centroid",
+        "booth_nos": [
+          274,
+          275,
+          276,
+          277
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          85.81536500000001,
+          25.3632925
+        ]
+      },
+      "properties": {
+        "id": "place:asdabad-tartar",
+        "name": "Asdabad Tartar",
+        "kind": "booth_place",
+        "booth_count": 4,
+        "nearest_ps": "Samiyagarh PS",
+        "source": "booth_centroid",
+        "booth_nos": [
+          279,
+          280,
+          281,
+          283
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          85.84248875,
+          25.356517000000004
+        ]
+      },
+      "properties": {
+        "id": "place:korara",
+        "name": "Korara",
+        "kind": "booth_place",
+        "booth_count": 4,
+        "nearest_ps": "Ghoshwari PS",
+        "source": "booth_centroid",
+        "booth_nos": [
+          284,
+          285,
+          286,
+          287
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          85.898925,
+          25.366642749999997
+        ]
+      },
+      "properties": {
+        "id": "place:gasaingaon",
+        "name": "Gasaingaon",
+        "kind": "booth_place",
+        "booth_count": 4,
+        "nearest_ps": "Ghoshwari PS",
+        "source": "booth_centroid",
+        "booth_nos": [
+          288,
+          290,
+          292,
+          293
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          85.892202,
+          25.357657500000002
+        ]
+      },
+      "properties": {
+        "id": "place:bholipakhar",
+        "name": "Bholipakhar",
+        "kind": "booth_place",
+        "booth_count": 2,
+        "nearest_ps": "Ghoshwari PS",
+        "source": "booth_centroid",
+        "booth_nos": [
+          289,
+          291
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          85.87071499999999,
+          25.3368046
+        ]
+      },
+      "properties": {
+        "id": "place:ghoswari",
+        "name": "Ghoswari",
+        "kind": "booth_place",
+        "booth_count": 5,
+        "nearest_ps": "Ghoshwari PS",
+        "source": "booth_centroid",
+        "booth_nos": [
+          294,
+          295,
+          296,
+          300,
+          308
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          85.881204,
+          25.3459485
+        ]
+      },
+      "properties": {
+        "id": "place:ramnagar",
+        "name": "Ramnagar",
+        "kind": "booth_place",
+        "booth_count": 2,
+        "nearest_ps": "Ghoshwari PS",
+        "source": "booth_centroid",
+        "booth_nos": [
+          297,
+          299
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          85.80545433333334,
+          25.338395000000002
+        ]
+      },
+      "properties": {
+        "id": "place:malpur-gurhitola",
+        "name": "Malpur Gurhitola",
+        "kind": "booth_place",
+        "booth_count": 3,
+        "nearest_ps": "Samiyagarh PS",
+        "source": "booth_centroid",
+        "booth_nos": [
+          301,
+          302,
+          303
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          85.844157,
+          25.3297235
+        ]
+      },
+      "properties": {
+        "id": "place:alinagar",
+        "name": "Alinagar",
+        "kind": "booth_place",
+        "booth_count": 2,
+        "nearest_ps": "Ghoshwari PS",
+        "source": "booth_centroid",
+        "booth_nos": [
+          304,
+          309
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          85.84690366666666,
+          25.331511333333328
+        ]
+      },
+      "properties": {
+        "id": "place:jaijana",
+        "name": "Jaijana",
+        "kind": "booth_place",
+        "booth_count": 3,
+        "nearest_ps": "Ghoshwari PS",
+        "source": "booth_centroid",
+        "booth_nos": [
+          305,
+          306,
+          307
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          85.77943457142858,
+          25.346824
+        ]
+      },
+      "properties": {
+        "id": "place:hak-narayanpur",
+        "name": "hak Narayanpur",
+        "kind": "booth_place",
+        "booth_count": 7,
+        "nearest_ps": "Samiyagarh PS",
+        "source": "booth_centroid",
+        "booth_nos": [
+          310,
+          312,
+          313,
+          315,
+          316,
+          317,
+          318
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          85.7748056,
+          25.327153
+        ]
+      },
+      "properties": {
+        "id": "place:samayanagarh-lakshmipur",
+        "name": "Samayanagarh Lakshmipur",
+        "kind": "booth_place",
+        "booth_count": 5,
+        "nearest_ps": "Samiyagarh PS",
+        "source": "booth_centroid",
+        "booth_nos": [
+          319,
+          320,
+          321,
+          324,
+          325
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          85.7867185,
+          25.3267095
+        ]
+      },
+      "properties": {
+        "id": "place:milki-keoti",
+        "name": "Milki Keoti",
+        "kind": "booth_place",
+        "booth_count": 2,
+        "nearest_ps": "Samiyagarh PS",
+        "source": "booth_centroid",
+        "booth_nos": [
+          322,
+          323
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          85.75340175,
+          25.2737585
+        ]
+      },
+      "properties": {
+        "id": "place:kumhara",
+        "name": "Kumhara",
+        "kind": "booth_place",
+        "booth_count": 4,
+        "nearest_ps": "Samiyagarh PS",
+        "source": "booth_centroid",
+        "booth_nos": [
+          326,
+          327,
+          332,
+          333
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          85.77057400000001,
+          25.2809955
+        ]
+      },
+      "properties": {
+        "id": "place:karkain",
+        "name": "Karkain",
+        "kind": "booth_place",
+        "booth_count": 2,
+        "nearest_ps": "Samiyagarh PS",
+        "source": "booth_centroid",
+        "booth_nos": [
+          328,
+          329
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          85.7953085,
+          25.28349
+        ]
+      },
+      "properties": {
+        "id": "place:jhanki-shahri",
+        "name": "Jhanki Shahri",
+        "kind": "booth_place",
+        "booth_count": 2,
+        "nearest_ps": "Samiyagarh PS",
+        "source": "booth_centroid",
+        "booth_nos": [
+          330,
+          331
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          85.78068099999999,
+          25.277005000000003
+        ]
+      },
+      "properties": {
+        "id": "place:isangarh",
+        "name": "Isangarh",
+        "kind": "booth_place",
+        "booth_count": 2,
+        "nearest_ps": "Samiyagarh PS",
+        "source": "booth_centroid",
+        "booth_nos": [
+          334,
+          335
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          85.82853666666666,
+          25.28145333333333
+        ]
+      },
+      "properties": {
+        "id": "place:chakdar-balwa",
+        "name": "Chakdar Balwa",
+        "kind": "booth_place",
+        "booth_count": 3,
+        "nearest_ps": "Ghoshwari PS",
+        "source": "booth_centroid",
+        "booth_nos": [
+          336,
+          341,
+          342
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          85.8515985,
+          25.2871595
+        ]
+      },
+      "properties": {
+        "id": "place:mohanpur",
+        "name": "Mohanpur",
+        "kind": "booth_place",
+        "booth_count": 2,
+        "nearest_ps": "Ghoshwari PS",
+        "source": "booth_centroid",
+        "booth_nos": [
+          337,
+          339
+        ]
+      }
+    }
+  ]
+}

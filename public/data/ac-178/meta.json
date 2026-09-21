@@ -1,0 +1,273 @@
+{
+  "election": {
+    "id": "bihar-vs-2025",
+    "name": "Bihar Vidhan Sabha 2025",
+    "year": 2025
+  },
+  "constituency": {
+    "ac_no": 178,
+    "name": "Mokama",
+    "district": "Patna",
+    "state": "Bihar",
+    "booth_count": 342,
+    "bbox": {
+      "min_lng": 85.69389799999999,
+      "min_lat": 25.258487,
+      "max_lng": 86.063151,
+      "max_lat": 25.499370000000003
+    },
+    "pc_no": 28,
+    "pc_name": "Munger"
+  },
+  "candidates": [
+    {
+      "key": "anant_kumar_singh",
+      "name": "Anant Kumar Singh",
+      "party": "JD(U)",
+      "color": "#1a6b3c",
+      "evm_votes": 91135,
+      "booths_won": 231
+    },
+    {
+      "key": "rajesh_kumar_ratnakar",
+      "name": "Dr. Rajesh Kumar Ratnakar",
+      "party": "IND",
+      "color": "#6b7280",
+      "evm_votes": 2098,
+      "booths_won": 0
+    },
+    {
+      "key": "veena_devi",
+      "name": "Veena Devi",
+      "party": "RJD",
+      "color": "#16a34a",
+      "evm_votes": 63022,
+      "booths_won": 87
+    },
+    {
+      "key": "priyadarshi_piyush",
+      "name": "Priyadarshi Piyush",
+      "party": "INC",
+      "color": "#2563eb",
+      "evm_votes": 19315,
+      "booths_won": 24
+    },
+    {
+      "key": "manju_kumari",
+      "name": "Manju Kumari",
+      "party": "IND",
+      "color": "#a855f7",
+      "evm_votes": 865,
+      "booths_won": 0
+    },
+    {
+      "key": "rahul_kumar",
+      "name": "Rahul Kumar",
+      "party": "IND",
+      "color": "#f59e0b",
+      "evm_votes": 1132,
+      "booths_won": 0
+    },
+    {
+      "key": "anil_kumar",
+      "name": "Anil Kumar",
+      "party": "IND",
+      "color": "#ec4899",
+      "evm_votes": 1389,
+      "booths_won": 0
+    },
+    {
+      "key": "vikash_kumar",
+      "name": "Vikash Kumar",
+      "party": "IND",
+      "color": "#14b8a6",
+      "evm_votes": 830,
+      "booths_won": 0
+    }
+  ],
+  "totals": {
+    "evm": {
+      "candidates": {
+        "anant_kumar_singh": 91135,
+        "rajesh_kumar_ratnakar": 2098,
+        "veena_devi": 63022,
+        "priyadarshi_piyush": 19315,
+        "manju_kumari": 865,
+        "rahul_kumar": 1132,
+        "anil_kumar": 1389,
+        "vikash_kumar": 830
+      },
+      "nota": 4598,
+      "total_valid": 179786,
+      "grand_total": 184384
+    },
+    "grand_including_postal": {
+      "anant_kumar_singh": 91416,
+      "veena_devi": 63210,
+      "priyadarshi_piyush": 19365,
+      "nota": 4609,
+      "grand_total": 185190
+    }
+  },
+  "verify": {
+    "anant_kumar_singh": {
+      "sum": 91135,
+      "expected": 91135,
+      "match": true
+    },
+    "rajesh_kumar_ratnakar": {
+      "sum": 2098,
+      "expected": 2098,
+      "match": true
+    },
+    "veena_devi": {
+      "sum": 63022,
+      "expected": 63022,
+      "match": true
+    },
+    "priyadarshi_piyush": {
+      "sum": 19315,
+      "expected": 19315,
+      "match": true
+    },
+    "manju_kumari": {
+      "sum": 865,
+      "expected": 865,
+      "match": true
+    },
+    "rahul_kumar": {
+      "sum": 1132,
+      "expected": 1132,
+      "match": true
+    },
+    "anil_kumar": {
+      "sum": 1389,
+      "expected": 1389,
+      "match": true
+    },
+    "vikash_kumar": {
+      "sum": 830,
+      "expected": 830,
+      "match": true
+    },
+    "nota": {
+      "sum": 4598,
+      "expected": 4598,
+      "match": true
+    },
+    "total_valid": {
+      "sum": 179786,
+      "expected": 179786,
+      "match": true
+    },
+    "grand_total": {
+      "sum": 184384,
+      "expected": 184384,
+      "match": true
+    }
+  },
+  "modes": {
+    "winner": "Color by leading candidate at booth",
+    "heat": {
+      "bins": [
+        {
+          "label": "Stronghold",
+          "min": 50,
+          "color": "#14532d"
+        },
+        {
+          "label": "Strong",
+          "min": 40,
+          "max": 50,
+          "color": "#16a34a"
+        },
+        {
+          "label": "Contested",
+          "min": 30,
+          "max": 40,
+          "color": "#eab308"
+        },
+        {
+          "label": "Weak",
+          "min": 20,
+          "max": 30,
+          "color": "#f97316"
+        },
+        {
+          "label": "Very weak",
+          "max": 20,
+          "color": "#dc2626"
+        }
+      ]
+    }
+  },
+  "attribution": {
+    "votes": "Form 20, Returning Officer, 178-Mokama, 14-11-2025",
+    "map_base": "NIC Mokameh (178) Assembly Constituency map",
+    "placements": "Mokama_Map_Booth_Locations.xlsx (curated Map X/Y)",
+    "tiles": "OpenFreeMap / OSM contributors",
+    "coords": "Georeferenced NIC PDF (rbf_tps)",
+    "electoral_roll": "ECI SIR Final Roll 2025 Part 1 — English extract"
+  },
+  "georef": {
+    "method": "rbf_tps",
+    "residuals_m": {
+      "rmse_m": 1827.541744087056,
+      "mean_m": 1536.0653194246506,
+      "median_m": 1282.5182837937302,
+      "max_m": 3034.121492847824,
+      "n": 11
+    },
+    "interpolated_booths": [
+      4,
+      34,
+      35,
+      36,
+      51,
+      52,
+      58,
+      59,
+      60
+    ],
+    "water_snap": {
+      "snapped": 50,
+      "unresolved": 0,
+      "rings_used": 21
+    },
+    "location_source_counts": {
+      "pdf_tps": 236,
+      "manual_interp": 9,
+      "outlier_clamped": 7,
+      "water_snapped": 11,
+      "local_corridor_affine": 53,
+      "user_drag": 5,
+      "nh33_rd_anchor": 21
+    }
+  },
+  "showcase": {
+    "booth_no": 1,
+    "title": "Booth intelligence preview",
+    "subtitle": "Votes, electors, and station details",
+    "hint": "Open Booth 1 for the full booth view"
+  },
+  "roll": {
+    "title": "Electoral Roll 2025",
+    "state_code": "S04",
+    "state": "Bihar",
+    "year": 2025,
+    "revision_type": "Special Intensive Revision (SIR) 2025",
+    "qualifying_date": "2025-07-01",
+    "publication_date": "2025-09-30",
+    "draft_publication_date": "2025-08-01"
+  },
+  "elections_available": [
+    2015,
+    2020,
+    2025
+  ],
+  "history": {
+    "ac_series": "history/ac-series.json",
+    "booth_matches": "history/booth-matches.json",
+    "place_series": "history/place-series.json"
+  }
+}

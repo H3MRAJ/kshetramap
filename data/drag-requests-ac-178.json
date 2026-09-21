@@ -1,0 +1,38 @@
+[
+  {
+    "id": "178-153-1784618477774",
+    "ac_no": 178,
+    "booth_no": 153,
+    "from_lat": 25.40542,
+    "from_lng": 85.89715,
+    "to_lat": 25.404916051300432,
+    "to_lng": 85.89723583068798,
+    "created_at": "2026-07-21T07:21:17.774Z",
+    "admin_status": "pending_review",
+    "note": "Personal map drag — not applied to authentic geometry"
+  },
+  {
+    "id": "178-158-1784620060683",
+    "ac_no": 178,
+    "booth_no": 158,
+    "from_lat": 25.413628,
+    "from_lng": 85.930284,
+    "to_lat": 25.400525541193474,
+    "to_lng": 85.90766761358827,
+    "created_at": "2026-07-21T07:47:40.684Z",
+    "admin_status": "pending_review",
+    "note": "Personal map drag — not applied to authentic geometry"
+  },
+  {
+    "id": "178-31-1784621878422",
+    "ac_no": 178,
+    "booth_no": 31,
+    "from_lat": 25.486122,
+    "from_lng": 85.782639,
+    "to_lat": 25.492223274192114,
+    "to_lng": 85.78422686773968,
+    "created_at": "2026-07-21T08:17:58.422Z",
+    "admin_status": "pending_review",
+    "note": "Personal map drag — not applied to authentic geometry"
+  }
+]

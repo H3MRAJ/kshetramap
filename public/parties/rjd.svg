@@ -1,0 +1,5 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" role="img" aria-label="RJD">
+  <rect width="64" height="64" rx="10" fill="#16a34a"/>
+  <!-- Lantern -->
+  <path fill="#fff" d="M32 10c-1.2 0-2 .8-2 2v3h4v-3c0-1.2-.8-2-2-2zm-10 12c0-4 4.5-7 10-7s10 3 10 7v2H22v-2zm2 4h16l1 4H23l1-4zm-1 6h18c.6 0 1 .4 1 1v10c0 5-4 10-10 12v3h4v3H26v-3h4v-3c-6-2-10-7-10-12V33c0-.6.4-1 1-1zm5 4v8c0 2.2 1.8 5 6 6 4.2-1 6-3.8 6-6v-8H28z"/>
+</svg>
