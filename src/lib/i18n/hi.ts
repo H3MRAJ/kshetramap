@@ -316,6 +316,7 @@ export const hi: Messages = {
     acLabel: "वि.स. {n}",
     editProfile: "प्रोफ़ाइल संपादित करें",
     viewDossier: "डोज़ियर देखें",
+    candidateCv: "उम्मीदवार सीवी",
   },
   admin: {
     users: {

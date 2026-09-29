@@ -7,7 +7,70 @@
   --background: #ffffff;
   --foreground: #171717;
   color-scheme: light;
+
+  /* Candidate CV Design Tokens (TOKENS.md) */
+  --km-ink: #0B1220;
+  --km-ink-elevated: #121A2B;
+  --km-navy: #1A2744;
+  --km-navy-muted: #243556;
+  --km-paper: #F4EFE6;
+  --km-paper-raised: #FAF7F1;
+  --km-paper-line: #E2D9CB;
+  --km-slate: #5C6578;
+  --km-slate-soft: #8A917F;
+
+  --km-text: #0B1220;
+  --km-text-on-ink: #F4EFE6;
+  --km-text-muted: #3D4658;
+  --km-text-muted-on-ink: #A8B0C0;
+
+  --km-accent: #C45C26;
+  --km-accent-soft: #F0D5C4;
+  --km-accent-ink: #7A3010;
+
+  --km-demo: #B45309;
+  --km-demo-bg: #FEF3C7;
+  --km-demo-banner-bg: #78350F;
+  --km-demo-banner-fg: #FEF3C7;
+
+  --km-sourced: #1F6B4A;
+  --km-sourced-bg: #D8EDE3;
+
+  --km-font-display: "Source Serif 4", "Libre Baskerville", Georgia, serif;
+  --km-font-sans: "IBM Plex Sans", "Source Sans 3", system-ui, sans-serif;
+  --km-font-mono: "IBM Plex Mono", ui-monospace, monospace;
 }
+
+/* Candidate CV Chrome */
+.km-demo-banner {
+  background: var(--km-demo-banner-bg);
+  color: var(--km-demo-banner-fg);
+  font-family: var(--km-font-sans);
+  font-weight: 500;
+  font-size: 12px;
+  line-height: 36px;
+  text-align: center;
+  letter-spacing: 0.04em;
+}
+
+.km-badge-demo {
+  color: var(--km-demo);
+  background: var(--km-demo-bg);
+  border: 1px solid var(--km-demo);
+}
+
+.km-badge-sourced {
+  color: var(--km-sourced);
+  background: var(--km-sourced-bg);
+  border: 1px solid var(--km-sourced);
+}
+
+.km-badge-soft-accent {
+  color: var(--km-accent-ink);
+  background: var(--km-accent-soft);
+  border: 1px solid var(--km-accent-soft);
+}
+
 
 html.dark {
   --background: #0a0a0a;

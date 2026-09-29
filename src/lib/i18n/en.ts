@@ -320,6 +320,7 @@ export const en = {
     acLabel: "AC {n}",
     editProfile: "Edit profile",
     viewDossier: "View dossier",
+    candidateCv: "Candidate CV",
   },
   admin: {
     users: {

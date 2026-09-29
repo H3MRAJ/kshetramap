@@ -1,5 +1,6 @@
 import { readdir, readFile } from "fs/promises";
 import path from "path";
+import Link from "next/link";
 import { auth } from "@/auth";
 import { DashboardConstituencies } from "./DashboardConstituencies";
 
@@ -51,6 +52,25 @@ export default async function AppDashboardPage() {
         {user.ac_scope.length > 0 && ` — AC scope: ${user.ac_scope.join(", ")}`}
       </p>
       {showConstituencies && <DashboardConstituencies acScope={constituencyAcNos} />}
+
+      <div className="mt-6 rounded-lg border border-zinc-200 bg-white p-4 shadow-sm dark:border-zinc-800 dark:bg-zinc-900">
+        <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3">
+          <div>
+            <h2 className="text-sm font-semibold text-zinc-900 dark:text-zinc-100">
+              Candidate Campaign Portfolio (Candidate CV)
+            </h2>
+            <p className="mt-1 text-xs text-zinc-600 dark:text-zinc-400">
+              Campaign portfolio &amp; delivery showcase for Bihar candidates and parties.
+            </p>
+          </div>
+          <Link
+            href="/app/candidates/demo-mokama-anant-kumar-singh"
+            className="inline-flex items-center justify-center rounded bg-emerald-700 px-3 py-1.5 text-xs font-medium text-white hover:bg-emerald-800 dark:bg-emerald-600 dark:hover:bg-emerald-700 shrink-0"
+          >
+            Open Candidate CV (Mokama) →
+          </Link>
+        </div>
+      </div>
     </div>
   );
 }

@@ -1,0 +1,225 @@
+{
+  "_id": "6abc364bc64374486af32592",
+  "candidate": {
+    "id": "demo-mokama-anant-kumar-singh",
+    "demoLabel": "DEMO/FAKE",
+    "name": "Anant Kumar Singh",
+    "aliases": [
+      "Anant Singh",
+      "Chhote Sarkar"
+    ],
+    "party": "JD(U)",
+    "seat": "Mokama (AC-178)",
+    "status": "MLA",
+    "oneLiner": "Five-term Mokama MLA; 2025 win with 91,416 votes. Delivery focus: flood protection, taal stewardship, local schools.",
+    "tags": [
+      "Flood & embankment",
+      "Taal stewardship",
+      "Schools",
+      "Constituency wins",
+      "DEMO delivery pack"
+    ],
+    "channels": {
+      "x": "@MLA_AnantSingh",
+      "youtube": "@mla_anantsingh",
+      "facebook": "AnantKumarSinghMLA",
+      "evidenceGrade": "SOURCED-cited"
+    }
+  },
+  "agenda": {
+    "demoLabel": "DEMO/FAKE",
+    "pillars": [
+      {
+        "id": "a1",
+        "title": "Flood-ready Mokama",
+        "detail": "Embankments, cuts, early-warning"
+      },
+      {
+        "id": "a2",
+        "title": "Taal & farmer wealth",
+        "detail": "Cold-store, MSP linkage, seeds"
+      },
+      {
+        "id": "a3",
+        "title": "Schools that stay open",
+        "detail": "Rooms, teachers, mid-day reliability"
+      },
+      {
+        "id": "a4",
+        "title": "Roads & last-mile access",
+        "detail": "Ghoswari–Pandarak link works"
+      }
+    ]
+  },
+  "electionScoreline2025": {
+    "evidenceGrade": "SOURCED",
+    "winner": {
+      "name": "Anant Kumar Singh",
+      "party": "JD(U)",
+      "votes": 91416
+    },
+    "runnerUp": {
+      "name": "Veena Devi",
+      "party": "RJD",
+      "votes": 63210
+    },
+    "third": {
+      "name": "Priyadarshi Piyush",
+      "party": "Jan Suraaj",
+      "votes": 19365
+    },
+    "margin": 28206
+  },
+  "localBase": {
+    "evidenceGrade": "SOURCED",
+    "blocks": [
+      "Mokama",
+      "Ghoswari",
+      "Pandarak"
+    ],
+    "ecology": "Taal / lentil bowl — flood & drainage care",
+    "note": "Multi-term ground network"
+  },
+  "meta": {
+    "demoLabel": "DEMO/FAKE",
+    "banner": "DEMO/FAKE SHOWCASE — works, agenda & plan synthetic where noted; elections SOURCED. asOf 2026-09-30 · Mokama AC-178",
+    "asOf": "2026-09-30",
+    "constituency": "Mokama AC-178",
+    "purpose": "KshetraMap Candidate CV — campaign portfolio showcase"
+  },
+  "plan": {
+    "demoLabel": "DEMO/FAKE",
+    "phases": [
+      {
+        "id": "p1",
+        "window": "0–6 mo",
+        "goal": "Secure embankment packages · audit gaps"
+      },
+      {
+        "id": "p2",
+        "window": "6–18 mo",
+        "goal": "Cold-store + drainage cut completion"
+      },
+      {
+        "id": "p3",
+        "window": "18–60 mo",
+        "goal": "School cluster + road grid finish"
+      }
+    ]
+  },
+  "serviceTimeline": [
+    {
+      "year": 2005,
+      "title": "Wins Mokama (JD(U))",
+      "detail": "Feb + Oct 2005",
+      "evidenceGrade": "SOURCED"
+    },
+    {
+      "year": 2010,
+      "title": "Re-elected Mokama (JD(U))",
+      "detail": "51,564 votes",
+      "evidenceGrade": "SOURCED"
+    },
+    {
+      "year": 2015,
+      "title": "Wins as Independent",
+      "detail": "Constituency continuity",
+      "evidenceGrade": "SOURCED"
+    },
+    {
+      "year": 2020,
+      "title": "Re-elected Mokama",
+      "detail": "78,721 votes",
+      "evidenceGrade": "SOURCED"
+    },
+    {
+      "year": 2025,
+      "title": "Wins Mokama (JD(U))",
+      "detail": "91,416 votes; margin +28,206",
+      "evidenceGrade": "SOURCED"
+    },
+    {
+      "year": 2026,
+      "title": "Serving term",
+      "detail": "Next-term Plan active",
+      "evidenceGrade": "SOURCED"
+    }
+  ],
+  "sources": [
+    {
+      "label": "ECI 2025 results",
+      "url": "",
+      "evidenceGrade": "SOURCED"
+    },
+    {
+      "label": "MyNeta / ADR seat page",
+      "url": "",
+      "evidenceGrade": "SOURCED"
+    }
+  ],
+  "updated_at": "2026-09-29T22:07:08.745Z",
+  "updated_by": "restore",
+  "worksPortfolio": [
+    {
+      "id": "demo-w1",
+      "demoLabel": "DEMO/FAKE",
+      "title": "Barhpur embankment package",
+      "years": [
+        2024,
+        2025,
+        2026
+      ],
+      "status": "In progress",
+      "summary": "Flood-ready bunds for Mokama villages.",
+      "evidenceGrade": "DEMO"
+    },
+    {
+      "id": "demo-w2",
+      "demoLabel": "DEMO/FAKE",
+      "title": "Pulse cold-store (lentil bowl)",
+      "years": [
+        2018,
+        2019
+      ],
+      "status": "Delivered",
+      "summary": "Farmer storage hub for taal harvest.",
+      "evidenceGrade": "DEMO"
+    },
+    {
+      "id": "demo-w3",
+      "demoLabel": "DEMO/FAKE",
+      "title": "Community wedding support",
+      "years": [
+        2010,
+        2020
+      ],
+      "status": "Ongoing",
+      "summary": "Social stewardship across the seat.",
+      "evidenceGrade": "DEMO"
+    },
+    {
+      "id": "demo-w4",
+      "demoLabel": "DEMO/FAKE",
+      "title": "Ghoswari school-room upgrade",
+      "years": [
+        2021,
+        2022
+      ],
+      "status": "Delivered",
+      "summary": "Extra classrooms and sanitation.",
+      "evidenceGrade": "DEMO"
+    },
+    {
+      "id": "demo-w5",
+      "demoLabel": "DEMO/FAKE",
+      "title": "Taal drainage cut (Ota–Maranchi)",
+      "years": [
+        2016,
+        2023
+      ],
+      "status": "Priority",
+      "summary": "Keep taal drainable for rabi season.",
+      "evidenceGrade": "DEMO"
+    }
+  ]
+}

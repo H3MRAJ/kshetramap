@@ -33,6 +33,17 @@ export function DashboardConstituencies({ acScope }: Props) {
             <Link href={`/ac/${ac}/dossier`} className="text-emerald-700 hover:underline dark:text-emerald-400">
               {t("app.viewDossier")}
             </Link>
+            {ac === 178 && (
+              <>
+                {" · "}
+                <Link
+                  href="/app/candidates/demo-mokama-anant-kumar-singh"
+                  className="text-emerald-700 hover:underline dark:text-emerald-400 font-medium"
+                >
+                  {t("app.candidateCv")}
+                </Link>
+              </>
+            )}
           </li>
         ))}
       </ul>

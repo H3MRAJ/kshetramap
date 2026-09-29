@@ -17,6 +17,14 @@ export default async function AppLayout({ children }: { children: React.ReactNod
         <span className="text-zinc-600 dark:text-zinc-300">
           {session.user.name} · {session.user.role}
         </span>
+        <nav className="flex items-center gap-3 ml-2">
+          <Link
+            href="/app/candidates/demo-mokama-anant-kumar-singh"
+            className="text-emerald-700 hover:underline dark:text-emerald-400 font-medium"
+          >
+            Candidate CV
+          </Link>
+        </nav>
         {isSuperAdmin && (
           <nav className="ml-auto flex items-center gap-3">
             <Link href="/app/admin/users" className="text-zinc-600 hover:underline dark:text-zinc-300">
