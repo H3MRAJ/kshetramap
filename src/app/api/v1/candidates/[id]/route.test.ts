@@ -15,6 +15,21 @@ vi.mock("@/lib/audit/logAudit", () => ({
   logAudit: vi.fn().mockResolvedValue(undefined),
 }));
 
+vi.mock("@/lib/candidateCv/candidateCvRepo", async () => {
+  const actual = await vi.importActual<
+    typeof import("@/lib/candidateCv/candidateCvRepo")
+  >("@/lib/candidateCv/candidateCvRepo");
+  return {
+    ...actual,
+    updateCandidateCv: vi
+      .fn()
+      .mockImplementation(async (id: string, patch: any, userId: string) => {
+        const existing = await actual.getCandidateCv(id);
+        return actual.mergeCandidateCv(existing!, patch, userId);
+      }),
+  };
+});
+
 import { requireApiSession } from "@/lib/api/session";
 
 describe("Candidate CV API (/api/v1/candidates/[id])", () => {

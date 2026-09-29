@@ -1,4 +1,6 @@
-import { describe, it, expect } from "vitest";
+import { describe, it, expect, beforeAll, afterAll } from "vitest";
+import { readFile, writeFile } from "fs/promises";
+import path from "path";
 import {
   parseSeatAc,
   isCandidateCvOwner,
@@ -179,6 +181,24 @@ describe("candidateCvRepo", () => {
   });
 
   describe("getCandidateCv & updateCandidateCv", () => {
+    let originalFixtureContent: string;
+    const fixturePath = path.join(
+      process.cwd(),
+      "data",
+      "demo",
+      "candidate-cv-mokama-showcase.json"
+    );
+
+    beforeAll(async () => {
+      originalFixtureContent = await readFile(fixturePath, "utf-8");
+    });
+
+    afterAll(async () => {
+      if (originalFixtureContent) {
+        await writeFile(fixturePath, originalFixtureContent, "utf-8");
+      }
+    });
+
     it("loads candidate CV from fixture for demo id", async () => {
       const cv = await getCandidateCv("demo-mokama-anant-kumar-singh");
       expect(cv).not.toBeNull();
@@ -223,13 +243,6 @@ describe("candidateCvRepo", () => {
       const reloaded = await getCandidateCv("demo-mokama-anant-kumar-singh");
       expect(reloaded?.agenda.pillars[0].title).toBe(
         "Flood-ready Mokama (Test Verified)"
-      );
-
-      // Restore original
-      await updateCandidateCv(
-        "demo-mokama-anant-kumar-singh",
-        original!,
-        "restore"
       );
     });
   });
