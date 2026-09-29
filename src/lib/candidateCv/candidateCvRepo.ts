@@ -91,6 +91,23 @@ export function mergeCandidateCv(
   };
 }
 
+/**
+ * Convert Mongo / BSON-bearing CV docs into plain JSON-safe props for Client Components.
+ *
+ * Next.js RSC cannot pass ObjectId / Date / Decimal128 (objects with toJSON / Buffer)
+ * into Client Components. JSON round-trip uses each type's toJSON (ObjectId → hex string,
+ * Date → ISO string, Decimal128 → string), then we drop Mongo `_id`.
+ */
+export function toPlainCandidateCv(doc: unknown): CandidateCvDoc {
+  const plain = JSON.parse(JSON.stringify(doc)) as CandidateCvDoc & {
+    _id?: unknown;
+  };
+  if (plain && typeof plain === "object" && "_id" in plain) {
+    delete plain._id;
+  }
+  return plain as CandidateCvDoc;
+}
+
 const FIXTURE_PATH = path.join(
   process.cwd(),
   "data",
@@ -105,11 +122,12 @@ const inMemoryCvCache = new Map<string, CandidateCvDoc>();
 
 /**
  * Retrieves candidate CV by ID. Checks MongoDB first; falls back to fixture file.
+ * Always returns a plain JSON object suitable for Client Component props.
  */
 export async function getCandidateCv(id: string): Promise<CandidateCvDoc | null> {
   // 1. Check in-memory cache first if already modified
   if (inMemoryCvCache.has(id)) {
-    return inMemoryCvCache.get(id)!;
+    return toPlainCandidateCv(inMemoryCvCache.get(id));
   }
 
   // 2. Check MongoDB collection "candidate_cv"
@@ -119,7 +137,7 @@ export async function getCandidateCv(id: string): Promise<CandidateCvDoc | null>
       "candidate.id": id,
     });
     if (doc) {
-      return doc;
+      return toPlainCandidateCv(doc);
     }
   } catch {
     // Mongo may not be running or connected — proceed to file fallback
@@ -130,7 +148,7 @@ export async function getCandidateCv(id: string): Promise<CandidateCvDoc | null>
     const raw = await readFile(FIXTURE_PATH, "utf-8");
     const parsed = JSON.parse(raw) as CandidateCvDoc;
     if (parsed.candidate?.id === id || id === "demo-mokama-anant-kumar-singh") {
-      return parsed;
+      return toPlainCandidateCv(parsed);
     }
   } catch {
     // File not readable
@@ -144,7 +162,8 @@ export async function getCandidateCv(id: string): Promise<CandidateCvDoc | null>
  * and in-memory cache to guarantee persistence across runs/reloads.
  */
 export async function saveCandidateCv(cv: CandidateCvDoc): Promise<void> {
-  inMemoryCvCache.set(cv.candidate.id, cv);
+  const plain = toPlainCandidateCv(cv);
+  inMemoryCvCache.set(plain.candidate.id, plain);
 
   // 1. Try persisting to Mongo
   try {
@@ -152,8 +171,8 @@ export async function saveCandidateCv(cv: CandidateCvDoc): Promise<void> {
     await db
       .collection<CandidateCvDoc>("candidate_cv")
       .updateOne(
-        { "candidate.id": cv.candidate.id },
-        { $set: cv },
+        { "candidate.id": plain.candidate.id },
+        { $set: plain },
         { upsert: true }
       );
   } catch {
@@ -163,11 +182,11 @@ export async function saveCandidateCv(cv: CandidateCvDoc): Promise<void> {
   // 2. Persist to file in data/demo/
   try {
     const filePath =
-      cv.candidate.id === "demo-mokama-anant-kumar-singh"
+      plain.candidate.id === "demo-mokama-anant-kumar-singh"
         ? FIXTURE_PATH
-        : path.join(process.cwd(), "data", "demo", `candidate-cv-${cv.candidate.id}.json`);
+        : path.join(process.cwd(), "data", "demo", `candidate-cv-${plain.candidate.id}.json`);
 
-    await writeFile(filePath, JSON.stringify(cv, null, 2), "utf-8");
+    await writeFile(filePath, JSON.stringify(plain, null, 2), "utf-8");
   } catch {
     // File write failed (e.g. read-only environment)
   }
@@ -188,5 +207,5 @@ export async function updateCandidateCv(
 
   const updated = mergeCandidateCv(existing, patch, userId);
   await saveCandidateCv(updated);
-  return updated;
+  return toPlainCandidateCv(updated);
 }

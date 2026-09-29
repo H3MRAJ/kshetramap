@@ -7,6 +7,7 @@ import {
   mergeCandidateCv,
   getCandidateCv,
   updateCandidateCv,
+  toPlainCandidateCv,
 } from "./candidateCvRepo";
 import type { CandidateCvDoc } from "./types";
 
@@ -245,5 +246,36 @@ describe("candidateCvRepo", () => {
         "Flood-ready Mokama (Test Verified)"
       );
     });
+  });
+});
+
+describe("toPlainCandidateCv", () => {
+  it("strips Mongo _id ObjectId/buffer and leaves string candidate.id", () => {
+    const mongoLike = {
+      ...mockCv,
+      _id: {
+        toJSON() {
+          return "507f1f77bcf86cd799439011";
+        },
+        buffer: { type: "Buffer", data: [1, 2, 3] },
+      },
+      updated_at: {
+        toJSON() {
+          return "2026-09-30T00:00:00.000Z";
+        },
+      },
+    };
+
+    const plain = toPlainCandidateCv(mongoLike);
+
+    expect(plain).not.toHaveProperty("_id");
+    expect(typeof plain.candidate.id).toBe("string");
+    expect(plain.candidate.id).toBe("demo-mokama-anant-kumar-singh");
+    expect(typeof plain.updated_at).toBe("string");
+    expect(plain.updated_at).toBe("2026-09-30T00:00:00.000Z");
+    // No Buffer / nested buffer props remain anywhere at top level
+    const json = JSON.stringify(plain);
+    expect(json).not.toMatch(/"buffer"/);
+    expect(json).not.toMatch(/ObjectId/);
   });
 });
