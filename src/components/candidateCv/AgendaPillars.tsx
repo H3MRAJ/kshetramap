@@ -5,15 +5,18 @@ import type { CandidateCvAgenda, CandidateCvAgendaPillar } from "@/lib/candidate
 interface AgendaPillarsProps {
   agenda: CandidateCvAgenda;
   isEditing?: boolean;
+  maxPillars?: number;
   onAgendaChange?: (agenda: CandidateCvAgenda) => void;
 }
 
 export function AgendaPillars({
   agenda,
   isEditing = false,
+  maxPillars,
   onAgendaChange,
 }: AgendaPillarsProps) {
-  const pillars = agenda.pillars || [];
+  const allPillars = agenda.pillars || [];
+  const pillars = maxPillars ? allPillars.slice(0, maxPillars) : allPillars;
 
   const handleUpdatePillar = (
     index: number,
@@ -21,7 +24,7 @@ export function AgendaPillars({
     value: string
   ) => {
     if (!onAgendaChange) return;
-    const next = [...pillars];
+    const next = [...allPillars];
     next[index] = { ...next[index], [field]: value };
     onAgendaChange({ ...agenda, pillars: next });
   };
@@ -33,12 +36,12 @@ export function AgendaPillars({
       title: "New Manifesto Priority",
       detail: "Commitment and delivery strategy for the constituency.",
     };
-    onAgendaChange({ ...agenda, pillars: [...pillars, newPillar] });
+    onAgendaChange({ ...agenda, pillars: [...allPillars, newPillar] });
   };
 
   const handleDeletePillar = (index: number) => {
     if (!onAgendaChange) return;
-    const next = pillars.filter((_, i) => i !== index);
+    const next = allPillars.filter((_, i) => i !== index);
     onAgendaChange({ ...agenda, pillars: next });
   };
 

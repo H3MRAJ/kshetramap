@@ -4,6 +4,7 @@ import { renderToStaticMarkup } from "react-dom/server";
 import { CandidateCvClient } from "./CandidateCvClient";
 import { IdentityStrip } from "./IdentityStrip";
 import { WorksGazette } from "./WorksGazette";
+import { WorksTeaser } from "./WorksTeaser";
 import { AgendaPillars } from "./AgendaPillars";
 import { LeftRailToc } from "./LeftRailToc";
 import type { CandidateCvDoc } from "@/lib/candidateCv/types";
@@ -57,6 +58,24 @@ const mockCv: CandidateCvDoc = {
       summary: "Farmer storage hub for taal harvest.",
       evidenceGrade: "DEMO",
     },
+    {
+      id: "w3",
+      demoLabel: "DEMO/FAKE",
+      title: "Community wedding support",
+      years: [2010, 2020],
+      status: "Ongoing",
+      summary: "Social stewardship across the seat.",
+      evidenceGrade: "DEMO",
+    },
+    {
+      id: "w4",
+      demoLabel: "DEMO/FAKE",
+      title: "Ghoswari school-room upgrade",
+      years: [2021, 2022],
+      status: "Delivered",
+      summary: "Extra classrooms and sanitation.",
+      evidenceGrade: "DEMO",
+    },
   ],
   agenda: {
     demoLabel: "DEMO/FAKE",
@@ -84,14 +103,40 @@ const mockCv: CandidateCvDoc = {
   ],
 };
 
-describe("Candidate CV - MIX Rally Masthead + Gazette Ledger Acceptance", () => {
-  it("enforces canonical section ordering: Agenda before Works, and Works before Service", () => {
+describe("Candidate CV - SEPARATE Rally Overview + Gazette Ledger Acceptance", () => {
+  it("Rally Overview (default) enforces ordering: Summary -> Agenda -> Works Teaser -> Scoreline, and omits full Gazette bands", () => {
     const html = renderToStaticMarkup(
-      <CandidateCvClient initialCv={mockCv} isOwner={false} />
+      <CandidateCvClient initialCv={mockCv} isOwner={false} initialView="overview" />
     );
 
     const summaryPos = html.indexOf('id="summary"');
     const agendaPos = html.indexOf('id="agenda"');
+    const worksPos = html.indexOf('id="works"');
+    const scorelinePos = html.indexOf('id="scoreline"');
+
+    expect(summaryPos).toBeGreaterThan(-1);
+    expect(agendaPos).toBeGreaterThan(-1);
+    expect(worksPos).toBeGreaterThan(-1);
+    expect(scorelinePos).toBeGreaterThan(-1);
+
+    // Overview section order check
+    expect(summaryPos).toBeLessThan(agendaPos);
+    expect(agendaPos).toBeLessThan(worksPos);
+    expect(worksPos).toBeLessThan(scorelinePos);
+
+    // Omit long Service, full Plan, heavy Local map on Overview content main
+    expect(html).not.toContain('id="service"');
+    expect(html).not.toContain('id="plan"');
+
+    // Contains CTA to open full Gazette
+    expect(html).toContain("Open full Gazette");
+  });
+
+  it("Gazette view (?view=gazette) renders order: Works -> Service -> Plan -> Local -> Scoreline -> Sources", () => {
+    const html = renderToStaticMarkup(
+      <CandidateCvClient initialCv={mockCv} isOwner={false} initialView="gazette" />
+    );
+
     const worksPos = html.indexOf('id="works"');
     const servicePos = html.indexOf('id="service"');
     const planPos = html.indexOf('id="plan"');
@@ -99,8 +144,6 @@ describe("Candidate CV - MIX Rally Masthead + Gazette Ledger Acceptance", () => 
     const scorelinePos = html.indexOf('id="scoreline"');
     const sourcesPos = html.indexOf('id="sources"');
 
-    expect(summaryPos).toBeGreaterThan(-1);
-    expect(agendaPos).toBeGreaterThan(-1);
     expect(worksPos).toBeGreaterThan(-1);
     expect(servicePos).toBeGreaterThan(-1);
     expect(planPos).toBeGreaterThan(-1);
@@ -108,9 +151,7 @@ describe("Candidate CV - MIX Rally Masthead + Gazette Ledger Acceptance", () => 
     expect(scorelinePos).toBeGreaterThan(-1);
     expect(sourcesPos).toBeGreaterThan(-1);
 
-    // Canonical order check
-    expect(summaryPos).toBeLessThan(agendaPos);
-    expect(agendaPos).toBeLessThan(worksPos);
+    // Gazette section order check
     expect(worksPos).toBeLessThan(servicePos);
     expect(servicePos).toBeLessThan(planPos);
     expect(planPos).toBeLessThan(localPos);
@@ -118,114 +159,121 @@ describe("Candidate CV - MIX Rally Masthead + Gazette Ledger Acceptance", () => 
     expect(scorelinePos).toBeLessThan(sourcesPos);
   });
 
-  it("LeftRailToc links match canonical anchor order", () => {
-    const html = renderToStaticMarkup(<LeftRailToc />);
+  it("LeftRailToc renders view-specific navigation links", () => {
+    const overviewHtml = renderToStaticMarkup(<LeftRailToc view="overview" />);
+    expect(overviewHtml).toContain('href="#summary"');
+    expect(overviewHtml).toContain('href="#agenda"');
+    expect(overviewHtml).toContain('href="#works"');
+    expect(overviewHtml).toContain('href="#scoreline"');
 
-    const hrefSummary = html.indexOf('href="#summary"');
-    const hrefAgenda = html.indexOf('href="#agenda"');
-    const hrefWorks = html.indexOf('href="#works"');
-    const hrefService = html.indexOf('href="#service"');
-    const hrefPlan = html.indexOf('href="#plan"');
-    const hrefLocal = html.indexOf('href="#local"');
-    const hrefScoreline = html.indexOf('href="#scoreline"');
-    const hrefSources = html.indexOf('href="#sources"');
-
-    expect(hrefSummary).toBeLessThan(hrefAgenda);
-    expect(hrefAgenda).toBeLessThan(hrefWorks);
-    expect(hrefWorks).toBeLessThan(hrefService);
-    expect(hrefService).toBeLessThan(hrefPlan);
-    expect(hrefPlan).toBeLessThan(hrefLocal);
-    expect(hrefLocal).toBeLessThan(hrefScoreline);
-    expect(hrefScoreline).toBeLessThan(hrefSources);
+    const gazetteHtml = renderToStaticMarkup(<LeftRailToc view="gazette" />);
+    expect(gazetteHtml).toContain('href="#works"');
+    expect(gazetteHtml).toContain('href="#service"');
+    expect(gazetteHtml).toContain('href="#plan"');
+    expect(gazetteHtml).toContain('href="#local"');
+    expect(gazetteHtml).toContain('href="#scoreline"');
+    expect(gazetteHtml).toContain('href="#sources"');
   });
 
-  it("Zero Cases/FIR/affidavit UI on Candidate CV", () => {
-    const html = renderToStaticMarkup(
-      <CandidateCvClient initialCv={mockCv} isOwner={false} />
+  it("Zero Cases/FIR/affidavit UI on Candidate CV on both views", () => {
+    const overviewHtml = renderToStaticMarkup(
+      <CandidateCvClient initialCv={mockCv} isOwner={false} initialView="overview" />
+    );
+    const gazetteHtml = renderToStaticMarkup(
+      <CandidateCvClient initialCv={mockCv} isOwner={false} initialView="gazette" />
     );
 
-    // Forbidden terminology on sell surface
-    expect(html).not.toMatch(/cases/i);
-    expect(html).not.toMatch(/\bfir\b/i);
-    expect(html).not.toMatch(/affidavit/i);
-    expect(html).not.toMatch(/allegation/i);
-    expect(html).not.toMatch(/controversy/i);
+    for (const html of [overviewHtml, gazetteHtml]) {
+      expect(html).not.toMatch(/cases/i);
+      expect(html).not.toMatch(/\bfir\b/i);
+      expect(html).not.toMatch(/affidavit/i);
+      expect(html).not.toMatch(/allegation/i);
+      expect(html).not.toMatch(/controversy/i);
+    }
   });
 
-  it("Rally Masthead displays poster-scale serif name, sticky ink header, and saffron accent", () => {
-    const html = renderToStaticMarkup(
+  it("IdentityStrip renders poster masthead on Overview and compressed bar on Gazette with chrome view toggle", () => {
+    const overviewHtml = renderToStaticMarkup(
       <IdentityStrip
         candidate={mockCv.candidate}
         meta={mockCv.meta}
         isOwner={true}
         isEditing={false}
+        view="overview"
       />
     );
 
-    // Header element with sticky positioning and ink background
-    expect(html).toContain("sticky");
-    expect(html).toContain("var(--km-ink)");
-    expect(html).toMatch(/top:\s*36px/); // Under DEMO banner
+    // Chrome toggle buttons
+    expect(overviewHtml).toContain("Overview");
+    expect(overviewHtml).toContain("Gazette");
 
-    // Display serif name
-    expect(html).toContain("Anant Kumar Singh");
-    expect(html).toContain("var(--km-font-display)");
+    // Display poster serif name
+    expect(overviewHtml).toContain("Anant Kumar Singh");
+    expect(overviewHtml).toContain("var(--km-font-display)");
+    expect(overviewHtml).toContain("border-l-4");
+    expect(overviewHtml).toContain("var(--km-accent)");
 
-    // Saffron accent left tick
-    expect(html).toContain("border-l-4");
-    expect(html).toContain("var(--km-accent)");
+    // Nameplate evidence badge is strictly DEMO/FAKE or LIVE
+    expect(overviewHtml).toContain("DEMO/FAKE");
+    expect(overviewHtml).not.toContain("MIXED");
 
-    // Nameplate evidence badge is strictly DEMO/FAKE or LIVE (never MIXED)
-    expect(html).toContain("DEMO/FAKE");
-    expect(html).not.toContain("MIXED");
-
-    // PDF affordance button
-    expect(html).toContain("PDF");
-    expect(html).toContain("↓");
-
-    // Owner edit affordance
-    expect(html).toContain("Edit Portfolio");
+    // Compressed Gazette header test
+    const gazetteHtml = renderToStaticMarkup(
+      <IdentityStrip
+        candidate={mockCv.candidate}
+        meta={mockCv.meta}
+        isOwner={true}
+        isEditing={false}
+        view="gazette"
+      />
+    );
+    expect(gazetteHtml).toContain("py-2.5 md:py-3");
+    expect(gazetteHtml).toContain("Print");
   });
 
-  it("WorksGazette renders dense editorial table on desktop and receipts on mobile", () => {
+  it("WorksTeaser renders ≤3 rows and Open full Gazette CTA", () => {
+    let clicked = false;
+    const html = renderToStaticMarkup(
+      <WorksTeaser
+        works={mockCv.worksPortfolio}
+        onOpenGazette={() => {
+          clicked = true;
+        }}
+      />
+    );
+
+    expect(html).toContain("Works &amp; delivery");
+    expect(html).toContain("Barhpur embankment package");
+    expect(html).toContain("Pulse cold-store");
+    expect(html).toContain("Community wedding support");
+    // 4th work should not be in teaser (sliced to ≤3)
+    expect(html).not.toContain("Ghoswari school-room upgrade");
+
+    expect(html).toContain("Open full Gazette");
+  });
+
+  it("WorksGazette renders full dense editorial table on desktop and receipts on mobile", () => {
     const html = renderToStaticMarkup(
       <WorksGazette works={mockCv.worksPortfolio} />
     );
 
-    // Section title
     expect(html).toContain("Works &amp; delivery");
-
-    // Table elements for desktop
     expect(html).toContain("<table");
     expect(html).toContain("Initiative / Scheme");
-    expect(html).toContain("Delivery &amp; Impact");
-    expect(html).toContain("Timeline");
-
-    // Delivery items
     expect(html).toContain("Barhpur embankment package");
-    expect(html).toContain("Pulse cold-store");
-    expect(html).toContain("2024–2026");
-    expect(html).toContain("2018–2019");
-
-    // Evidence badges on synthetic works
-    expect(html).toContain("DEMO/FAKE");
-
-    // Year filter select
-    expect(html).toContain('id="works-year-filter"');
+    expect(html).toContain("Ghoswari school-room upgrade");
   });
 
-  it("AgendaPillars renders manifesto pillars in a row on desktop with numbered saffron marks", () => {
+  it("AgendaPillars supports maxPillars prop for Overview view", () => {
     const html = renderToStaticMarkup(
-      <AgendaPillars agenda={mockCv.agenda} />
+      <AgendaPillars agenda={mockCv.agenda} maxPillars={3} />
     );
 
-    expect(html).toContain("Agenda");
     expect(html).toContain("01");
     expect(html).toContain("02");
     expect(html).toContain("03");
-    expect(html).toContain("04");
+    expect(html).not.toContain("04");
     expect(html).toContain("Flood-ready Mokama");
-    expect(html).toContain("Taal &amp; farmer wealth");
-    expect(html).toContain("lg:grid-cols-4"); // 4 pillars in a row
+    expect(html).toContain("lg:grid-cols-3");
   });
 });

@@ -2,15 +2,20 @@ import React, { useState, useEffect } from "react";
 import { EvidenceBadge } from "./EvidenceBadge";
 
 interface LeftRailTocProps {
+  view?: "overview" | "gazette";
   blocks?: string[];
   activeId?: string;
   onNavigate?: (id: string) => void;
 }
 
-// Canonical TOC anchors per MIX-RALLY-GAZETTE.md §1
-const SECTIONS = [
+const OVERVIEW_SECTIONS = [
   { id: "summary", label: "Summary" },
   { id: "agenda", label: "Agenda" },
+  { id: "works", label: "Works teaser" },
+  { id: "scoreline", label: "2025 win scoreline" },
+];
+
+const GAZETTE_SECTIONS = [
   { id: "works", label: "Works & delivery" },
   { id: "service", label: "Service timeline" },
   { id: "plan", label: "Plan" },
@@ -20,22 +25,25 @@ const SECTIONS = [
 ];
 
 export function LeftRailToc({
+  view = "overview",
   blocks = ["Mokama", "Ghoswari", "Pandarak"],
-  activeId = "summary",
+  activeId,
   onNavigate,
 }: LeftRailTocProps) {
+  const sections = view === "gazette" ? GAZETTE_SECTIONS : OVERVIEW_SECTIONS;
+  const defaultActive = activeId || sections[0].id;
   const [mobileOpen, setMobileOpen] = useState(false);
-  const [currentActive, setCurrentActive] = useState(activeId);
+  const [currentActive, setCurrentActive] = useState(defaultActive);
 
   useEffect(() => {
-    setCurrentActive(activeId);
-  }, [activeId]);
+    setCurrentActive(activeId || sections[0].id);
+  }, [activeId, view, sections]);
 
   // Scroll spy effect to update active section
   useEffect(() => {
     const handleScroll = () => {
       const scrollPos = window.scrollY + 200;
-      for (const section of SECTIONS) {
+      for (const section of sections) {
         const el = document.getElementById(section.id);
         if (el) {
           const top = el.offsetTop;
@@ -50,7 +58,7 @@ export function LeftRailToc({
 
     window.addEventListener("scroll", handleScroll, { passive: true });
     return () => window.removeEventListener("scroll", handleScroll);
-  }, []);
+  }, [sections]);
 
   const handleClick = (id: string, e: React.MouseEvent) => {
     e.preventDefault();
@@ -62,7 +70,7 @@ export function LeftRailToc({
     } else {
       const el = document.getElementById(id);
       if (el) {
-        const offset = 180; // banner (36) + masthead (~140) + margin
+        const offset = 180;
         const top = el.getBoundingClientRect().top + window.scrollY - offset;
         window.scrollTo({ top, behavior: "smooth" });
         window.history.pushState(null, "", `#${id}`);
@@ -73,9 +81,9 @@ export function LeftRailToc({
   const navContent = (
     <nav className="flex flex-col space-y-1">
       <p className="px-3 pb-2 text-[11px] font-semibold text-[var(--km-slate)] tracking-wider uppercase">
-        CV TOC
+        {view === "gazette" ? "Gazette TOC" : "Overview TOC"}
       </p>
-      {SECTIONS.map((sec) => {
+      {sections.map((sec) => {
         const isActive = currentActive === sec.id;
         return (
           <a
@@ -123,24 +131,12 @@ export function LeftRailToc({
     </div>
   );
 
-  const favorabilityStub = (
-    <div className="mt-4 px-3 py-2 rounded border border-[rgba(244,239,230,0.06)] bg-[rgba(255,255,255,0.02)]">
-      <span className="text-[11px] text-[var(--km-slate)] font-medium">
-        Favorability · later
-      </span>
-      <p className="text-[10px] text-[var(--km-slate-soft)] mt-0.5">
-        Verified ground poll stub
-      </p>
-    </div>
-  );
-
   return (
     <>
       {/* Desktop Slim Left Rail (desktop ≥1280px / xl) */}
       <aside className="hidden xl:block w-48 shrink-0 sticky top-44 self-start max-h-[calc(100vh-180px)] overflow-y-auto pr-1 select-none">
         {navContent}
-        {mapStub}
-        {favorabilityStub}
+        {view === "gazette" && mapStub}
       </aside>
 
       {/* Mobile Floating Action Button (screens <1280px / xl) */}
@@ -166,7 +162,9 @@ export function LeftRailToc({
             onClick={(e) => e.stopPropagation()}
           >
             <div className="flex items-center justify-between pb-3 mb-2 border-b border-[rgba(244,239,230,0.12)]">
-              <span className="text-sm font-semibold">CV sections</span>
+              <span className="text-sm font-semibold">
+                {view === "gazette" ? "Gazette sections" : "Overview sections"}
+              </span>
               <button
                 type="button"
                 onClick={() => setMobileOpen(false)}
@@ -176,7 +174,7 @@ export function LeftRailToc({
               </button>
             </div>
             {navContent}
-            {mapStub}
+            {view === "gazette" && mapStub}
           </div>
         </div>
       )}

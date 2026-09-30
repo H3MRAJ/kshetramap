@@ -1,11 +1,13 @@
 "use client";
 
 import React, { useState } from "react";
+import { useSearchParams, useRouter, usePathname } from "next/navigation";
 import { DemoBanner } from "./DemoBanner";
 import { IdentityStrip } from "./IdentityStrip";
 import { LeftRailToc } from "./LeftRailToc";
 import { AgendaPillars } from "./AgendaPillars";
 import { WorksGazette } from "./WorksGazette";
+import { WorksTeaser } from "./WorksTeaser";
 import { ServiceTimeline } from "./ServiceTimeline";
 import { PlanRoadmap } from "./PlanRoadmap";
 import { LocalBaseCard } from "./LocalBaseCard";
@@ -22,14 +24,65 @@ import type {
 interface CandidateCvClientProps {
   initialCv: CandidateCvDoc;
   isOwner: boolean;
+  initialView?: string;
 }
 
-export function CandidateCvClient({ initialCv, isOwner }: CandidateCvClientProps) {
+function useSafeNavigation() {
+  let searchParams: ReturnType<typeof useSearchParams> | null = null;
+  let router: ReturnType<typeof useRouter> | null = null;
+  let pathname = "";
+
+  try {
+    searchParams = useSearchParams();
+  } catch {
+    searchParams = null;
+  }
+
+  try {
+    router = useRouter();
+  } catch {
+    router = null;
+  }
+
+  try {
+    pathname = usePathname();
+  } catch {
+    pathname = "";
+  }
+
+  return { searchParams, router, pathname };
+}
+
+export function CandidateCvClient({
+  initialCv,
+  isOwner,
+  initialView,
+}: CandidateCvClientProps) {
   const [cv, setCv] = useState<CandidateCvDoc>(initialCv);
   const [editState, setEditState] = useState<CandidateCvDoc>(initialCv);
   const [isEditing, setIsEditing] = useState(false);
   const [isSaving, setIsSaving] = useState(false);
   const [toastMessage, setToastMessage] = useState<string | null>(null);
+
+  const { searchParams, router, pathname } = useSafeNavigation();
+
+  const viewParam = searchParams?.get("view") ?? initialView;
+  const activeView: "overview" | "gazette" =
+    viewParam === "gazette" ? "gazette" : "overview";
+
+  const handleViewChange = (newView: "overview" | "gazette") => {
+    if (router && pathname) {
+      const params = new URLSearchParams(searchParams ? searchParams.toString() : "");
+      if (newView === "gazette") {
+        params.set("view", "gazette");
+      } else {
+        params.delete("view");
+      }
+      const query = params.toString();
+      const target = query ? `${pathname}?${query}` : pathname;
+      router.push(target);
+    }
+  };
 
   const showToast = (msg: string) => {
     setToastMessage(msg);
@@ -85,7 +138,13 @@ export function CandidateCvClient({ initialCv, isOwner }: CandidateCvClientProps
   };
 
   const handlePdfClick = () => {
-    showToast("PDF campaign portfolio export scheduled for Phase B");
+    if (activeView === "gazette") {
+      if (typeof window !== "undefined") {
+        window.print();
+      }
+    } else {
+      showToast("PDF campaign portfolio export scheduled for Phase B");
+    }
   };
 
   const currentData = isEditing ? editState : cv;
@@ -152,7 +211,7 @@ export function CandidateCvClient({ initialCv, isOwner }: CandidateCvClientProps
       {/* CV-01: Demo honesty banner (sticky full bleed) */}
       <DemoBanner meta={currentData.meta} />
 
-      {/* CV-02: Rally masthead (sticky under banner) */}
+      {/* CV-02: Rally masthead or compressed Gazette bar (sticky under banner) */}
       <IdentityStrip
         candidate={currentData.candidate}
         meta={currentData.meta}
@@ -160,6 +219,8 @@ export function CandidateCvClient({ initialCv, isOwner }: CandidateCvClientProps
         isEditing={isEditing}
         isSaving={isSaving}
         hasUnsavedChanges={true}
+        view={activeView}
+        onViewChange={handleViewChange}
         onToggleEdit={handleToggleEdit}
         onSave={handleSave}
         onCancel={handleCancel}
@@ -168,133 +229,154 @@ export function CandidateCvClient({ initialCv, isOwner }: CandidateCvClientProps
 
       {/* Main Container Layout */}
       <div className="mx-auto flex max-w-6xl gap-6 px-4 py-8 md:px-8">
-        {/* CV-08: Slim Left rail TOC + Map Stub (desktop ≥1280px / xl) */}
-        <LeftRailToc blocks={currentData.localBase?.blocks} />
+        {/* Left rail TOC */}
+        <LeftRailToc
+          view={activeView}
+          blocks={currentData.localBase?.blocks}
+        />
 
         {/* Main Content Area (Warm Paper Panel) */}
         <main
           id="cv"
           className="flex-1 rounded-lg border border-[var(--km-paper-line)] bg-[var(--km-paper)] p-6 md:p-8 text-[var(--km-text)] shadow-none space-y-10 min-w-0"
         >
-          {/* Section 1: Summary */}
-          <section id="summary" aria-labelledby="summary-heading" className="scroll-mt-44">
-            <div className="flex items-center gap-2 mb-3 pb-1 border-b border-[var(--km-paper-line)]">
-              <h2
-                id="summary-heading"
-                className="text-lg md:text-xl font-bold text-[var(--km-text)]"
-                style={{ fontFamily: "var(--km-font-display)" }}
-              >
-                Summary
-              </h2>
-              <span className="text-xs text-[var(--km-slate)]">• Campaign strengths &amp; focus</span>
-            </div>
-
-            {isEditing ? (
-              <div className="space-y-3">
-                <div>
-                  <label className="block text-xs font-semibold text-[var(--km-slate)] mb-1">
-                    Candidate Profile Summary:
-                  </label>
-                  <textarea
-                    rows={3}
-                    value={currentData.candidate.oneLiner}
-                    onChange={(e) => handleSummaryChange(e.target.value)}
-                    className="w-full text-sm rounded border border-[var(--km-paper-line)] bg-white p-2.5 text-[var(--km-text)] leading-relaxed focus:ring-1 focus:ring-[var(--km-accent)]"
-                  />
+          {activeView === "overview" ? (
+            /* Rally Overview View (Default) */
+            <>
+              {/* Section 1: Summary */}
+              <section id="summary" aria-labelledby="summary-heading" className="scroll-mt-44">
+                <div className="flex items-center gap-2 mb-3 pb-1 border-b border-[var(--km-paper-line)]">
+                  <h2
+                    id="summary-heading"
+                    className="text-lg md:text-xl font-bold text-[var(--km-text)]"
+                    style={{ fontFamily: "var(--km-font-display)" }}
+                  >
+                    Summary
+                  </h2>
+                  <span className="text-xs text-[var(--km-slate)]">• Campaign strengths &amp; focus</span>
                 </div>
 
-                <div>
-                  <label className="block text-xs font-semibold text-[var(--km-slate)] mb-1">
-                    Tags (comma-separated):
-                  </label>
-                  <input
-                    type="text"
-                    value={currentData.candidate.tags?.join(", ") || ""}
-                    onChange={(e) => handleTagsChange(e.target.value)}
-                    className="w-full text-xs rounded border border-[var(--km-paper-line)] bg-white px-2.5 py-1.5 text-[var(--km-text)] focus:ring-1 focus:ring-[var(--km-accent)]"
-                  />
-                </div>
-              </div>
-            ) : (
-              <div>
-                <p className="text-sm md:text-base text-[var(--km-text)] leading-relaxed font-normal">
-                  {currentData.candidate.oneLiner}
-                </p>
+                {isEditing ? (
+                  <div className="space-y-3">
+                    <div>
+                      <label className="block text-xs font-semibold text-[var(--km-slate)] mb-1">
+                        Candidate Profile Summary:
+                      </label>
+                      <textarea
+                        rows={3}
+                        value={currentData.candidate.oneLiner}
+                        onChange={(e) => handleSummaryChange(e.target.value)}
+                        className="w-full text-sm rounded border border-[var(--km-paper-line)] bg-white p-2.5 text-[var(--km-text)] leading-relaxed focus:ring-1 focus:ring-[var(--km-accent)]"
+                      />
+                    </div>
 
-                {/* Tag chips */}
-                <div className="flex flex-wrap gap-2 mt-3.5">
-                  {currentData.candidate.tags?.map((tag) => (
-                    <span
-                      key={tag}
-                      className="inline-flex items-center px-2.5 py-0.5 rounded text-xs font-medium bg-[var(--km-paper-raised)] text-[var(--km-text)] border border-[var(--km-paper-line)] shadow-2xs"
-                    >
-                      {tag}
-                    </span>
-                  ))}
-                </div>
+                    <div>
+                      <label className="block text-xs font-semibold text-[var(--km-slate)] mb-1">
+                        Tags (comma-separated):
+                      </label>
+                      <input
+                        type="text"
+                        value={currentData.candidate.tags?.join(", ") || ""}
+                        onChange={(e) => handleTagsChange(e.target.value)}
+                        className="w-full text-xs rounded border border-[var(--km-paper-line)] bg-white px-2.5 py-1.5 text-[var(--km-text)] focus:ring-1 focus:ring-[var(--km-accent)]"
+                      />
+                    </div>
+                  </div>
+                ) : (
+                  <div>
+                    <p className="text-sm md:text-base text-[var(--km-text)] leading-relaxed font-normal">
+                      {currentData.candidate.oneLiner}
+                    </p>
 
-                {/* Channels */}
-                {currentData.candidate.channels && (
-                  <div className="mt-4 pt-3 border-t border-[var(--km-paper-line)] flex flex-wrap items-center gap-3 text-xs text-[var(--km-slate)]">
-                    <span className="font-semibold text-[var(--km-text)]">
-                      Channels:
-                    </span>
-                    {currentData.candidate.channels.x && (
-                      <span className="font-medium text-[var(--km-text-muted)]">
-                        X {currentData.candidate.channels.x}
-                      </span>
+                    {/* Tag chips */}
+                    <div className="flex flex-wrap gap-2 mt-3.5">
+                      {currentData.candidate.tags?.map((tag) => (
+                        <span
+                          key={tag}
+                          className="inline-flex items-center px-2.5 py-0.5 rounded text-xs font-medium bg-[var(--km-paper-raised)] text-[var(--km-text)] border border-[var(--km-paper-line)] shadow-2xs"
+                        >
+                          {tag}
+                        </span>
+                      ))}
+                    </div>
+
+                    {/* Channels */}
+                    {currentData.candidate.channels && (
+                      <div className="mt-4 pt-3 border-t border-[var(--km-paper-line)] flex flex-wrap items-center gap-3 text-xs text-[var(--km-slate)]">
+                        <span className="font-semibold text-[var(--km-text)]">
+                          Channels:
+                        </span>
+                        {currentData.candidate.channels.x && (
+                          <span className="font-medium text-[var(--km-text-muted)]">
+                            X {currentData.candidate.channels.x}
+                          </span>
+                        )}
+                        {currentData.candidate.channels.youtube && (
+                          <span className="font-medium text-[var(--km-text-muted)]">
+                            YT {currentData.candidate.channels.youtube}
+                          </span>
+                        )}
+                        {currentData.candidate.channels.facebook && (
+                          <span className="font-medium text-[var(--km-text-muted)]">
+                            FB {currentData.candidate.channels.facebook}
+                          </span>
+                        )}
+                        <EvidenceBadge
+                          grade={currentData.candidate.channels.evidenceGrade || "SOURCED-cited"}
+                        />
+                      </div>
                     )}
-                    {currentData.candidate.channels.youtube && (
-                      <span className="font-medium text-[var(--km-text-muted)]">
-                        YT {currentData.candidate.channels.youtube}
-                      </span>
-                    )}
-                    {currentData.candidate.channels.facebook && (
-                      <span className="font-medium text-[var(--km-text-muted)]">
-                        FB {currentData.candidate.channels.facebook}
-                      </span>
-                    )}
-                    <EvidenceBadge
-                      grade={currentData.candidate.channels.evidenceGrade || "SOURCED-cited"}
-                    />
                   </div>
                 )}
-              </div>
-            )}
-          </section>
+              </section>
 
-          {/* Section 2: Agenda (CV-06) — first major content band per MIX-RALLY-GAZETTE §1 */}
-          <AgendaPillars
-            agenda={currentData.agenda}
-            isEditing={isEditing}
-            onAgendaChange={handleAgendaChange}
-          />
+              {/* Section 2: Agenda (3 pillars) */}
+              <AgendaPillars
+                agenda={currentData.agenda}
+                isEditing={isEditing}
+                maxPillars={3}
+                onAgendaChange={handleAgendaChange}
+              />
 
-          {/* Section 3: Works & delivery (CV-05) — second hero band (Gazette Ledger) */}
-          <WorksGazette
-            works={currentData.worksPortfolio}
-            isEditing={isEditing}
-            onWorksChange={handleWorksChange}
-          />
+              {/* Section 3: Works teaser (≤3 rows + CTA) */}
+              <WorksTeaser
+                works={currentData.worksPortfolio}
+                onOpenGazette={() => handleViewChange("gazette")}
+              />
 
-          {/* Section 4: Service timeline (CV-04) — wins / terms / offices only */}
-          <ServiceTimeline timeline={currentData.serviceTimeline} />
+              {/* Section 4: 2025 win scoreline snapshot */}
+              <ScorelineWin scoreline={currentData.electionScoreline2025} />
+            </>
+          ) : (
+            /* Gazette View (?view=gazette) */
+            <>
+              {/* Section 1: Works & delivery full gazette table */}
+              <WorksGazette
+                works={currentData.worksPortfolio}
+                isEditing={isEditing}
+                onWorksChange={handleWorksChange}
+              />
 
-          {/* Section 5: Plan (CV-07) */}
-          <PlanRoadmap
-            plan={currentData.plan}
-            isEditing={isEditing}
-            onPlanChange={handlePlanChange}
-          />
+              {/* Section 2: Service timeline */}
+              <ServiceTimeline timeline={currentData.serviceTimeline} />
 
-          {/* Section 6: Local base (CV-09) */}
-          <LocalBaseCard localBase={currentData.localBase} />
+              {/* Section 3: Plan roadmap */}
+              <PlanRoadmap
+                plan={currentData.plan}
+                isEditing={isEditing}
+                onPlanChange={handlePlanChange}
+              />
 
-          {/* Section 7: 2025 win scoreline (CV-10) */}
-          <ScorelineWin scoreline={currentData.electionScoreline2025} />
+              {/* Section 4: Local base */}
+              <LocalBaseCard localBase={currentData.localBase} />
 
-          {/* Section 8: Sources (CV-11) */}
-          <SourcesFooter sources={currentData.sources} />
+              {/* Section 5: 2025 win scoreline */}
+              <ScorelineWin scoreline={currentData.electionScoreline2025} />
+
+              {/* Section 6: Sources footer */}
+              <SourcesFooter sources={currentData.sources} />
+            </>
+          )}
         </main>
       </div>
     </div>

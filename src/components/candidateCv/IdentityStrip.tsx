@@ -9,6 +9,8 @@ interface IdentityStripProps {
   isEditing: boolean;
   isSaving?: boolean;
   hasUnsavedChanges?: boolean;
+  view?: "overview" | "gazette";
+  onViewChange?: (view: "overview" | "gazette") => void;
   onToggleEdit?: () => void;
   onSave?: () => void;
   onCancel?: () => void;
@@ -22,11 +24,15 @@ export function IdentityStrip({
   isEditing,
   isSaving = false,
   hasUnsavedChanges = false,
+  view = "overview",
+  onViewChange,
   onToggleEdit,
   onSave,
   onCancel,
   onPdfClick,
 }: IdentityStripProps) {
+  const isGazette = view === "gazette";
+
   // Initials from name
   const initials = candidate.name
     .split(" ")
@@ -55,23 +61,35 @@ export function IdentityStrip({
 
   return (
     <header
-      className="sticky z-40 w-full border-b border-[rgba(244,239,230,0.15)] bg-[var(--km-ink)] px-4 py-4 md:py-6 md:min-h-[150px] text-[var(--km-paper)] shadow-md transition-all flex flex-col justify-center"
+      className={`sticky z-40 w-full border-b border-[rgba(244,239,230,0.15)] bg-[var(--km-ink)] px-4 text-[var(--km-paper)] shadow-md transition-all flex flex-col justify-center ${
+        isGazette
+          ? "py-2.5 md:py-3 md:min-h-[72px]"
+          : "py-4 md:py-6 md:min-h-[140px]"
+      }`}
       style={{ top: meta.demoLabel === "DEMO/FAKE" ? "36px" : "0px" }}
       aria-label="Candidate identity masthead"
     >
       <div className="mx-auto flex w-full max-w-6xl flex-wrap items-center justify-between gap-4">
-        {/* Left: Rally Masthead Nameplate with Saffron Tick & Poster Serif Name */}
+        {/* Left: Identity Masthead Nameplate */}
         <div className="flex items-center gap-3.5 md:gap-4 min-w-0">
           {/* Avatar / Monogram */}
-          <div className="flex h-12 w-12 md:h-14 md:w-14 shrink-0 items-center justify-center rounded border border-[rgba(244,239,230,0.2)] bg-[var(--km-navy)] text-base md:text-lg font-serif font-bold text-[var(--km-paper)] shadow-sm">
+          <div
+            className={`flex shrink-0 items-center justify-center rounded border border-[rgba(244,239,230,0.2)] bg-[var(--km-navy)] font-serif font-bold text-[var(--km-paper)] shadow-sm ${
+              isGazette ? "h-9 w-9 text-xs md:h-10 md:w-10 md:text-sm" : "h-12 w-12 text-base md:h-14 md:w-14 md:text-lg"
+            }`}
+          >
             {initials}
           </div>
 
           {/* Saffron Left Tick Accent + Identity Column */}
           <div className="border-l-4 border-[var(--km-accent)] pl-3.5 md:pl-4 flex flex-col justify-center min-w-0">
-            {/* Display serif name large (poster-scale) */}
+            {/* Display name */}
             <h1
-              className="text-2xl sm:text-3xl md:text-4xl lg:text-[40px] font-bold tracking-tight text-[var(--km-paper)] leading-tight truncate"
+              className={`font-bold tracking-tight text-[var(--km-paper)] leading-tight truncate ${
+                isGazette
+                  ? "text-lg sm:text-xl md:text-2xl"
+                  : "text-2xl sm:text-3xl md:text-4xl lg:text-[40px]"
+              }`}
               style={{ fontFamily: "var(--km-font-display)" }}
             >
               {candidate.name}
@@ -105,23 +123,61 @@ export function IdentityStrip({
                 isNameplate={true}
               />
 
-              {candidate.aliases?.length > 0 && (
+              {!isGazette && candidate.aliases?.length > 0 && (
                 <>
                   <span className="text-[rgba(244,239,230,0.4)] hidden sm:inline">•</span>
                   <span className="hidden sm:inline">aka {candidate.aliases.join(" · ")}</span>
                 </>
               )}
 
-              <span className="text-[rgba(244,239,230,0.4)] hidden md:inline">•</span>
-              <span className="tabular-nums hidden md:inline">
-                refreshed {meta.asOf} IST
-              </span>
+              {!isGazette && (
+                <>
+                  <span className="text-[rgba(244,239,230,0.4)] hidden md:inline">•</span>
+                  <span className="tabular-nums hidden md:inline">
+                    refreshed {meta.asOf} IST
+                  </span>
+                </>
+              )}
             </div>
           </div>
         </div>
 
-        {/* Right: Actions (Owner edit controls + PDF affordance) */}
+        {/* Right: Actions (View Switcher + Owner edit controls + PDF/Print affordance) */}
         <div className="flex items-center gap-2.5 shrink-0 ml-auto md:ml-0">
+          {/* Chrome View Toggle: Rally Overview | Gazette */}
+          <div
+            className="flex items-center rounded-md border border-[rgba(244,239,230,0.2)] bg-[var(--km-navy)] p-0.5"
+            role="tablist"
+            aria-label="View selection"
+          >
+            <button
+              type="button"
+              role="tab"
+              aria-selected={!isGazette}
+              onClick={() => onViewChange?.("overview")}
+              className={`px-3 py-1 text-xs font-semibold rounded transition-colors cursor-pointer ${
+                !isGazette
+                  ? "bg-[var(--km-accent)] text-white shadow-xs"
+                  : "text-[var(--km-text-muted-on-ink)] hover:text-white"
+              }`}
+            >
+              Overview
+            </button>
+            <button
+              type="button"
+              role="tab"
+              aria-selected={isGazette}
+              onClick={() => onViewChange?.("gazette")}
+              className={`px-3 py-1 text-xs font-semibold rounded transition-colors cursor-pointer ${
+                isGazette
+                  ? "bg-[var(--km-accent)] text-white shadow-xs"
+                  : "text-[var(--km-text-muted-on-ink)] hover:text-white"
+              }`}
+            >
+              Gazette
+            </button>
+          </div>
+
           {/* Owner edit controls */}
           {isOwner && (
             <>
@@ -156,14 +212,14 @@ export function IdentityStrip({
             </>
           )}
 
-          {/* PDF affordance */}
+          {/* PDF / Print affordance */}
           <button
             type="button"
             onClick={onPdfClick}
-            className="flex items-center gap-1.5 px-3.5 py-1.5 rounded text-xs font-semibold border border-[var(--km-accent)] text-[var(--km-paper)] hover:bg-[var(--km-navy-muted)] transition focus:outline-none focus:ring-2 focus:ring-[var(--km-accent)]"
-            title="Download PDF campaign portfolio (affordance)"
+            className="flex items-center gap-1.5 px-3 py-1.5 rounded text-xs font-semibold border border-[var(--km-accent)] text-[var(--km-paper)] hover:bg-[var(--km-navy-muted)] transition focus:outline-none focus:ring-2 focus:ring-[var(--km-accent)]"
+            title={isGazette ? "Print / Export Gazette PDF" : "Download PDF campaign portfolio"}
           >
-            <span>PDF</span>
+            <span>{isGazette ? "Print" : "PDF"}</span>
             <span className="text-[var(--km-accent)]">↓</span>
           </button>
         </div>
