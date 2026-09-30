@@ -8,7 +8,7 @@ interface SourcesFooterProps {
 
 export function SourcesFooter({ sources }: SourcesFooterProps) {
   return (
-    <footer id="sources" aria-labelledby="sources-heading" className="scroll-mt-32 pt-4">
+    <footer id="sources" aria-labelledby="sources-heading" className="scroll-mt-44 pt-4">
       <div className="flex items-center gap-2 mb-3 pb-1 border-b border-[var(--km-paper-line)]">
         <h2
           id="sources-heading"

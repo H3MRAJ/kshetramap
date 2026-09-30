@@ -42,18 +42,30 @@ export function AgendaPillars({
     onAgendaChange({ ...agenda, pillars: next });
   };
 
+  const getGridColsClass = () => {
+    if (pillars.length === 3) return "lg:grid-cols-3";
+    if (pillars.length >= 5) return "lg:grid-cols-5";
+    return "lg:grid-cols-4";
+  };
+
   return (
-    <section id="agenda" aria-labelledby="agenda-heading" className="scroll-mt-32">
-      <div className="flex items-center gap-2 mb-4 pb-1 border-b border-[var(--km-paper-line)]">
-        <h2
-          id="agenda-heading"
-          className="text-lg md:text-xl font-bold text-[var(--km-text)]"
-          style={{ fontFamily: "var(--km-font-display)" }}
-        >
-          Agenda
-        </h2>
-        <EvidenceBadge demoLabel={agenda.demoLabel || "DEMO/FAKE"} />
-        <span className="text-xs text-[var(--km-slate)] ml-auto">
+    <section id="agenda" aria-labelledby="agenda-heading" className="scroll-mt-44">
+      {/* Section Header */}
+      <div className="flex flex-wrap items-center justify-between gap-3 mb-4 pb-2 border-b border-[var(--km-paper-line)]">
+        <div className="flex flex-wrap items-center gap-2">
+          <h2
+            id="agenda-heading"
+            className="text-lg md:text-xl font-bold text-[var(--km-text)]"
+            style={{ fontFamily: "var(--km-font-display)" }}
+          >
+            Agenda
+          </h2>
+          <EvidenceBadge demoLabel={agenda.demoLabel || "DEMO/FAKE"} />
+          <span className="text-xs text-[var(--km-slate)] hidden sm:inline">
+            • First-term manifesto pillars &amp; commitments
+          </span>
+        </div>
+        <span className="text-xs text-[var(--km-slate)] ml-auto font-medium">
           Priority Manifesto Pillars
         </span>
       </div>
@@ -70,20 +82,23 @@ export function AgendaPillars({
         </div>
       )}
 
-      <div className="grid gap-4 md:grid-cols-2">
+      {/* 3-5 Pillar Cards in a Row on Desktop / Stack on Mobile */}
+      <div className={`grid gap-4 grid-cols-1 sm:grid-cols-2 ${getGridColsClass()}`}>
         {pillars.map((pillar, i) => (
           <div
             key={pillar.id || i}
-            className="rounded-md border border-[var(--km-paper-line)] bg-[var(--km-paper-raised)] p-4 shadow-none transition hover:border-[var(--km-navy)] flex flex-col justify-between"
+            className="rounded-md border border-[var(--km-paper-line)] border-t-2 border-t-[var(--km-accent)] bg-[var(--km-paper-raised)] p-5 shadow-none transition hover:border-[var(--km-navy)] flex flex-col justify-between"
           >
             <div>
-              <div className="flex items-center justify-between mb-2">
-                <span className="flex h-6 w-6 items-center justify-center rounded-sm bg-[var(--km-accent-soft)] text-xs font-bold text-[var(--km-accent-ink)] tabular-nums">
-                  {i + 1}
+              {/* Numbered saffron mark + per-card synthetic chip */}
+              <div className="flex items-center justify-between mb-3">
+                <span className="flex h-7 w-7 items-center justify-center rounded bg-[var(--km-accent-soft)] text-xs font-bold text-[var(--km-accent-ink)] tabular-nums border border-[var(--km-accent-soft)]">
+                  0{i + 1}
                 </span>
-                <span className="text-[11px] text-[var(--km-slate)] font-medium uppercase tracking-wider">
-                  Pillar
-                </span>
+                <EvidenceBadge
+                  demoLabel={agenda.demoLabel || "DEMO/FAKE"}
+                  className="text-[10px] py-0 px-1.5"
+                />
               </div>
 
               {isEditing ? (
@@ -94,7 +109,7 @@ export function AgendaPillars({
                     onChange={(e) =>
                       handleUpdatePillar(i, "title", e.target.value)
                     }
-                    className="w-full text-sm font-semibold rounded border border-[var(--km-paper-line)] bg-white px-2 py-1 text-[var(--km-text)]"
+                    className="w-full text-xs font-semibold rounded border border-[var(--km-paper-line)] bg-white px-2 py-1 text-[var(--km-text)]"
                   />
                   <textarea
                     rows={2}
@@ -107,10 +122,13 @@ export function AgendaPillars({
                 </div>
               ) : (
                 <>
-                  <h3 className="text-sm md:text-base font-semibold text-[var(--km-text)]">
+                  <h3
+                    className="text-base font-bold text-[var(--km-text)] leading-snug"
+                    style={{ fontFamily: "var(--km-font-display)" }}
+                  >
                     {pillar.title}
                   </h3>
-                  <p className="text-xs md:text-sm text-[var(--km-text-muted)] mt-1 leading-relaxed">
+                  <p className="text-xs md:text-sm text-[var(--km-text-muted)] mt-2 leading-relaxed">
                     {pillar.detail}
                   </p>
                 </>
@@ -118,11 +136,11 @@ export function AgendaPillars({
             </div>
 
             {isEditing && (
-              <div className="mt-2.5 pt-2 border-t border-[var(--km-paper-line)] flex justify-end">
+              <div className="mt-3 pt-2 border-t border-[var(--km-paper-line)] flex justify-end">
                 <button
                   type="button"
                   onClick={() => handleDeletePillar(i)}
-                  className="text-xs text-red-700 hover:underline"
+                  className="text-xs text-red-700 hover:underline font-medium"
                 >
                   Delete pillar
                 </button>

@@ -4,9 +4,9 @@ import React, { useState } from "react";
 import { DemoBanner } from "./DemoBanner";
 import { IdentityStrip } from "./IdentityStrip";
 import { LeftRailToc } from "./LeftRailToc";
-import { ServiceTimeline } from "./ServiceTimeline";
-import { WorksCards } from "./WorksCards";
 import { AgendaPillars } from "./AgendaPillars";
+import { WorksGazette } from "./WorksGazette";
+import { ServiceTimeline } from "./ServiceTimeline";
 import { PlanRoadmap } from "./PlanRoadmap";
 import { LocalBaseCard } from "./LocalBaseCard";
 import { ScorelineWin } from "./ScorelineWin";
@@ -149,10 +149,10 @@ export function CandidateCvClient({ initialCv, isOwner }: CandidateCvClientProps
         </div>
       )}
 
-      {/* CV-01: Demo honesty banner (sticky) */}
+      {/* CV-01: Demo honesty banner (sticky full bleed) */}
       <DemoBanner meta={currentData.meta} />
 
-      {/* CV-02: Identity strip (sticky under banner) */}
+      {/* CV-02: Rally masthead (sticky under banner) */}
       <IdentityStrip
         candidate={currentData.candidate}
         meta={currentData.meta}
@@ -168,16 +168,16 @@ export function CandidateCvClient({ initialCv, isOwner }: CandidateCvClientProps
 
       {/* Main Container Layout */}
       <div className="mx-auto flex max-w-6xl gap-6 px-4 py-8 md:px-8">
-        {/* CV-08: Left rail TOC + Map Stub */}
+        {/* CV-08: Slim Left rail TOC + Map Stub (desktop ≥1280px / xl) */}
         <LeftRailToc blocks={currentData.localBase?.blocks} />
 
         {/* Main Content Area (Warm Paper Panel) */}
         <main
           id="cv"
-          className="flex-1 rounded-lg border border-[var(--km-paper-line)] bg-[var(--km-paper)] p-6 md:p-8 text-[var(--km-text)] shadow-sm space-y-10 min-w-0"
+          className="flex-1 rounded-lg border border-[var(--km-paper-line)] bg-[var(--km-paper)] p-6 md:p-8 text-[var(--km-text)] shadow-none space-y-10 min-w-0"
         >
           {/* Section 1: Summary */}
-          <section id="summary" aria-labelledby="summary-heading" className="scroll-mt-32">
+          <section id="summary" aria-labelledby="summary-heading" className="scroll-mt-44">
             <div className="flex items-center gap-2 mb-3 pb-1 border-b border-[var(--km-paper-line)]">
               <h2
                 id="summary-heading"
@@ -263,22 +263,22 @@ export function CandidateCvClient({ initialCv, isOwner }: CandidateCvClientProps
             )}
           </section>
 
-          {/* Section 2: Service timeline (CV-04) */}
-          <ServiceTimeline timeline={currentData.serviceTimeline} />
-
-          {/* Section 3: Works & delivery (CV-05) */}
-          <WorksCards
-            works={currentData.worksPortfolio}
-            isEditing={isEditing}
-            onWorksChange={handleWorksChange}
-          />
-
-          {/* Section 4: Agenda (CV-06) */}
+          {/* Section 2: Agenda (CV-06) — first major content band per MIX-RALLY-GAZETTE §1 */}
           <AgendaPillars
             agenda={currentData.agenda}
             isEditing={isEditing}
             onAgendaChange={handleAgendaChange}
           />
+
+          {/* Section 3: Works & delivery (CV-05) — second hero band (Gazette Ledger) */}
+          <WorksGazette
+            works={currentData.worksPortfolio}
+            isEditing={isEditing}
+            onWorksChange={handleWorksChange}
+          />
+
+          {/* Section 4: Service timeline (CV-04) — wins / terms / offices only */}
+          <ServiceTimeline timeline={currentData.serviceTimeline} />
 
           {/* Section 5: Plan (CV-07) */}
           <PlanRoadmap

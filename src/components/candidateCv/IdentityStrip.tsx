@@ -54,25 +54,36 @@ export function IdentityStrip({
   };
 
   return (
-    <div
-      className="sticky z-40 w-full border-b border-[rgba(244,239,230,0.15)] bg-[var(--km-ink-elevated)] px-4 py-3 md:px-8 text-[var(--km-text-on-ink)] shadow-md transition-all"
+    <header
+      className="sticky z-40 w-full border-b border-[rgba(244,239,230,0.15)] bg-[var(--km-ink)] px-4 py-4 md:py-6 md:min-h-[150px] text-[var(--km-paper)] shadow-md transition-all flex flex-col justify-center"
       style={{ top: meta.demoLabel === "DEMO/FAKE" ? "36px" : "0px" }}
+      aria-label="Candidate identity masthead"
     >
-      <div className="mx-auto flex max-w-6xl flex-wrap items-center justify-between gap-3">
-        {/* Left: Avatar + Identity details */}
-        <div className="flex items-center gap-3.5">
-          <div className="flex h-12 w-12 shrink-0 items-center justify-center rounded-md border border-[rgba(244,239,230,0.2)] bg-[var(--km-navy)] text-base font-semibold text-[var(--km-text-on-ink)] shadow-sm">
+      <div className="mx-auto flex w-full max-w-6xl flex-wrap items-center justify-between gap-4">
+        {/* Left: Rally Masthead Nameplate with Saffron Tick & Poster Serif Name */}
+        <div className="flex items-center gap-3.5 md:gap-4 min-w-0">
+          {/* Avatar / Monogram */}
+          <div className="flex h-12 w-12 md:h-14 md:w-14 shrink-0 items-center justify-center rounded border border-[rgba(244,239,230,0.2)] bg-[var(--km-navy)] text-base md:text-lg font-serif font-bold text-[var(--km-paper)] shadow-sm">
             {initials}
           </div>
 
-          <div className="flex flex-col">
-            <div className="flex flex-wrap items-center gap-2">
-              <h1
-                className="text-xl md:text-2xl font-bold tracking-tight text-[var(--km-text-on-ink)]"
-                style={{ fontFamily: 'var(--km-font-display)' }}
-              >
-                {candidate.name}
-              </h1>
+          {/* Saffron Left Tick Accent + Identity Column */}
+          <div className="border-l-4 border-[var(--km-accent)] pl-3.5 md:pl-4 flex flex-col justify-center min-w-0">
+            {/* Display serif name large (poster-scale) */}
+            <h1
+              className="text-2xl sm:text-3xl md:text-4xl lg:text-[40px] font-bold tracking-tight text-[var(--km-paper)] leading-tight truncate"
+              style={{ fontFamily: "var(--km-font-display)" }}
+            >
+              {candidate.name}
+            </h1>
+
+            {/* Badges and Seat metadata line */}
+            <div className="flex flex-wrap items-center gap-2 text-xs text-[var(--km-text-muted-on-ink)] mt-1">
+              <span className="font-semibold text-[var(--km-paper)]">
+                seat: {candidate.seat}
+              </span>
+
+              <span className="text-[rgba(244,239,230,0.4)]">•</span>
 
               {/* Party chip */}
               <span
@@ -84,7 +95,7 @@ export function IdentityStrip({
               </span>
 
               {/* Status chip */}
-              <span className="inline-flex items-center px-2 py-0.5 rounded text-xs font-medium bg-[var(--km-navy-muted)] text-[var(--km-text-on-ink)] border border-[rgba(244,239,230,0.15)]">
+              <span className="inline-flex items-center px-2 py-0.5 rounded text-xs font-medium bg-[var(--km-navy-muted)] text-[var(--km-paper)] border border-[rgba(244,239,230,0.15)]">
                 {candidate.status}
               </span>
 
@@ -93,24 +104,24 @@ export function IdentityStrip({
                 demoLabel={candidate.demoLabel}
                 isNameplate={true}
               />
-            </div>
 
-            <div className="flex flex-wrap items-center gap-2 text-xs text-[var(--km-text-muted-on-ink)] mt-0.5">
               {candidate.aliases?.length > 0 && (
-                <span>aka {candidate.aliases.join(" · ")}</span>
+                <>
+                  <span className="text-[rgba(244,239,230,0.4)] hidden sm:inline">•</span>
+                  <span className="hidden sm:inline">aka {candidate.aliases.join(" · ")}</span>
+                </>
               )}
-              {candidate.aliases?.length > 0 && <span>•</span>}
-              <span className="font-medium text-[var(--km-text-on-ink)]">
-                seat: {candidate.seat}
+
+              <span className="text-[rgba(244,239,230,0.4)] hidden md:inline">•</span>
+              <span className="tabular-nums hidden md:inline">
+                refreshed {meta.asOf} IST
               </span>
-              <span>•</span>
-              <span className="tabular-nums">refreshed {meta.asOf} IST</span>
             </div>
           </div>
         </div>
 
-        {/* Right: Actions (PDF affordance + Owner edit controls) */}
-        <div className="flex items-center gap-2.5">
+        {/* Right: Actions (Owner edit controls + PDF affordance) */}
+        <div className="flex items-center gap-2.5 shrink-0 ml-auto md:ml-0">
           {/* Owner edit controls */}
           {isOwner && (
             <>
@@ -120,7 +131,7 @@ export function IdentityStrip({
                     type="button"
                     onClick={onCancel}
                     disabled={isSaving}
-                    className="px-3 py-1.5 rounded text-xs font-medium bg-[var(--km-navy)] text-[var(--km-text-on-ink)] border border-[rgba(244,239,230,0.2)] hover:bg-[var(--km-navy-muted)] transition"
+                    className="px-3 py-1.5 rounded text-xs font-medium bg-[var(--km-navy)] text-[var(--km-paper)] border border-[rgba(244,239,230,0.2)] hover:bg-[var(--km-navy-muted)] transition"
                   >
                     Cancel
                   </button>
@@ -137,7 +148,7 @@ export function IdentityStrip({
                 <button
                   type="button"
                   onClick={onToggleEdit}
-                  className="px-3 py-1.5 rounded text-xs font-medium border border-[var(--km-accent)] text-[var(--km-accent-soft)] hover:bg-[var(--km-navy-muted)] transition flex items-center gap-1"
+                  className="px-3 py-1.5 rounded text-xs font-semibold border border-[var(--km-accent)] text-[var(--km-accent-soft)] hover:bg-[var(--km-navy-muted)] transition flex items-center gap-1.5"
                 >
                   <span className="text-[var(--km-accent)]">✎</span> Edit Portfolio
                 </button>
@@ -149,7 +160,7 @@ export function IdentityStrip({
           <button
             type="button"
             onClick={onPdfClick}
-            className="flex items-center gap-1 px-3 py-1.5 rounded text-xs font-medium border border-[var(--km-accent)] text-[var(--km-text-on-ink)] hover:bg-[var(--km-navy-muted)] transition focus:outline-none focus:ring-2 focus:ring-[var(--km-accent)]"
+            className="flex items-center gap-1.5 px-3.5 py-1.5 rounded text-xs font-semibold border border-[var(--km-accent)] text-[var(--km-paper)] hover:bg-[var(--km-navy-muted)] transition focus:outline-none focus:ring-2 focus:ring-[var(--km-accent)]"
             title="Download PDF campaign portfolio (affordance)"
           >
             <span>PDF</span>
@@ -157,6 +168,8 @@ export function IdentityStrip({
           </button>
         </div>
       </div>
-    </div>
+    </header>
   );
 }
+
+export { IdentityStrip as RallyMasthead };

@@ -8,7 +8,7 @@ interface LocalBaseCardProps {
 
 export function LocalBaseCard({ localBase }: LocalBaseCardProps) {
   return (
-    <section id="local" aria-labelledby="local-heading" className="scroll-mt-32">
+    <section id="local" aria-labelledby="local-heading" className="scroll-mt-44">
       <div className="flex items-center gap-2 mb-4 pb-1 border-b border-[var(--km-paper-line)]">
         <h2
           id="local-heading"

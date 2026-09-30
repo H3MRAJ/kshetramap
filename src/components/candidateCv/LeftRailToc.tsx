@@ -7,11 +7,12 @@ interface LeftRailTocProps {
   onNavigate?: (id: string) => void;
 }
 
+// Canonical TOC anchors per MIX-RALLY-GAZETTE.md §1
 const SECTIONS = [
   { id: "summary", label: "Summary" },
-  { id: "service", label: "Service timeline" },
-  { id: "works", label: "Works & delivery" },
   { id: "agenda", label: "Agenda" },
+  { id: "works", label: "Works & delivery" },
+  { id: "service", label: "Service timeline" },
   { id: "plan", label: "Plan" },
   { id: "local", label: "Local base" },
   { id: "scoreline", label: "2025 win scoreline" },
@@ -33,7 +34,7 @@ export function LeftRailToc({
   // Scroll spy effect to update active section
   useEffect(() => {
     const handleScroll = () => {
-      const scrollPos = window.scrollY + 160;
+      const scrollPos = window.scrollY + 200;
       for (const section of SECTIONS) {
         const el = document.getElementById(section.id);
         if (el) {
@@ -61,7 +62,7 @@ export function LeftRailToc({
     } else {
       const el = document.getElementById(id);
       if (el) {
-        const offset = 120; // banner + strip height
+        const offset = 180; // banner (36) + masthead (~140) + margin
         const top = el.getBoundingClientRect().top + window.scrollY - offset;
         window.scrollTo({ top, behavior: "smooth" });
         window.history.pushState(null, "", `#${id}`);
@@ -71,7 +72,7 @@ export function LeftRailToc({
 
   const navContent = (
     <nav className="flex flex-col space-y-1">
-      <p className="px-3 pb-2 text-xs font-semibold text-[var(--km-slate)] tracking-wider">
+      <p className="px-3 pb-2 text-[11px] font-semibold text-[var(--km-slate)] tracking-wider uppercase">
         CV TOC
       </p>
       {SECTIONS.map((sec) => {
@@ -81,10 +82,10 @@ export function LeftRailToc({
             key={sec.id}
             href={`#${sec.id}`}
             onClick={(e) => handleClick(sec.id, e)}
-            className={`flex items-center gap-2.5 px-3 py-2 rounded text-xs font-medium transition-all ${
+            className={`flex items-center gap-2 px-3 py-1.5 rounded text-xs transition-all ${
               isActive
                 ? "bg-[var(--km-navy-muted)] text-[var(--km-text-on-ink)] border-l-2 border-[var(--km-accent)] pl-2.5 font-semibold"
-                : "text-[var(--km-text-muted-on-ink)] hover:bg-[rgba(255,255,255,0.05)] hover:text-[var(--km-text-on-ink)]"
+                : "text-[var(--km-text-muted-on-ink)] hover:bg-[rgba(255,255,255,0.05)] hover:text-[var(--km-text-on-ink)] font-normal"
             }`}
           >
             <span>{sec.label}</span>
@@ -95,17 +96,17 @@ export function LeftRailToc({
   );
 
   const mapStub = (
-    <div className="mt-6 rounded-md border border-[rgba(244,239,230,0.12)] bg-[var(--km-navy)] p-3 text-[var(--km-text-on-ink)]">
-      <div className="flex items-center justify-between gap-1 mb-2">
+    <div className="mt-5 rounded border border-[rgba(244,239,230,0.1)] bg-[var(--km-navy)] p-2.5 text-[var(--km-text-on-ink)]">
+      <div className="flex items-center justify-between gap-1 mb-1.5">
         <span className="text-xs font-semibold text-[var(--km-text-on-ink)]">
           Map stub
         </span>
         <EvidenceBadge grade="SOURCED" />
       </div>
-      <p className="text-[11px] text-[var(--km-slate-soft)] mb-2.5">
+      <p className="text-[10px] text-[var(--km-slate-soft)] mb-2">
         SOURCED geography names only
       </p>
-      <div className="rounded bg-[var(--km-ink)] p-2.5 border border-[rgba(244,239,230,0.08)] space-y-1.5">
+      <div className="rounded bg-[var(--km-ink)] p-2 border border-[rgba(244,239,230,0.06)] space-y-1">
         {blocks.map((b) => (
           <div
             key={b}
@@ -115,7 +116,7 @@ export function LeftRailToc({
             <span>{b}</span>
           </div>
         ))}
-        <div className="flex items-center gap-1.5 text-xs text-[var(--km-slate-soft)] italic pt-1 border-t border-[rgba(244,239,230,0.08)]">
+        <div className="flex items-center gap-1.5 text-[11px] text-[var(--km-slate-soft)] italic pt-1 border-t border-[rgba(244,239,230,0.08)]">
           <span>[taal floodlands]</span>
         </div>
       </div>
@@ -123,7 +124,7 @@ export function LeftRailToc({
   );
 
   const favorabilityStub = (
-    <div className="mt-5 px-3 py-2 rounded border border-[rgba(244,239,230,0.06)] bg-[rgba(255,255,255,0.02)]">
+    <div className="mt-4 px-3 py-2 rounded border border-[rgba(244,239,230,0.06)] bg-[rgba(255,255,255,0.02)]">
       <span className="text-[11px] text-[var(--km-slate)] font-medium">
         Favorability · later
       </span>
@@ -135,19 +136,19 @@ export function LeftRailToc({
 
   return (
     <>
-      {/* Desktop Left Rail (sticky) */}
-      <aside className="hidden lg:block w-[240px] shrink-0 sticky top-28 self-start max-h-[calc(100vh-130px)] overflow-y-auto pr-2 select-none">
+      {/* Desktop Slim Left Rail (desktop ≥1280px / xl) */}
+      <aside className="hidden xl:block w-48 shrink-0 sticky top-44 self-start max-h-[calc(100vh-180px)] overflow-y-auto pr-1 select-none">
         {navContent}
         {mapStub}
         {favorabilityStub}
       </aside>
 
-      {/* Mobile Floating Action Button / Bar */}
-      <div className="lg:hidden fixed bottom-4 right-4 z-40">
+      {/* Mobile Floating Action Button (screens <1280px / xl) */}
+      <div className="xl:hidden fixed bottom-4 right-4 z-40">
         <button
           type="button"
           onClick={() => setMobileOpen(true)}
-          className="flex items-center gap-2 rounded-full bg-[var(--km-navy)] px-4 py-2.5 text-xs font-semibold text-[var(--km-text-on-ink)] shadow-lg border border-[var(--km-accent)] hover:bg-[var(--km-navy-muted)] focus:outline-none"
+          className="flex items-center gap-2 rounded-full bg-[var(--km-navy)] px-4 py-2 text-xs font-semibold text-[var(--km-text-on-ink)] shadow-lg border border-[var(--km-accent)] hover:bg-[var(--km-navy-muted)] focus:outline-none"
         >
           <span>CV sections</span>
           <span className="text-[var(--km-accent)]">▴</span>
@@ -157,7 +158,7 @@ export function LeftRailToc({
       {/* Mobile Bottom Sheet Modal */}
       {mobileOpen && (
         <div
-          className="lg:hidden fixed inset-0 z-50 bg-black/60 backdrop-blur-xs flex flex-col justify-end"
+          className="xl:hidden fixed inset-0 z-50 bg-black/60 backdrop-blur-xs flex flex-col justify-end"
           onClick={() => setMobileOpen(false)}
         >
           <div

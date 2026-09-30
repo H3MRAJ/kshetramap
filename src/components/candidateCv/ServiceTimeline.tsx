@@ -8,7 +8,7 @@ interface ServiceTimelineProps {
 
 export function ServiceTimeline({ timeline }: ServiceTimelineProps) {
   return (
-    <section id="service" aria-labelledby="service-heading" className="scroll-mt-32">
+    <section id="service" aria-labelledby="service-heading" className="scroll-mt-44">
       <div className="flex items-center gap-2 mb-4 pb-1 border-b border-[var(--km-paper-line)]">
         <h2
           id="service-heading"

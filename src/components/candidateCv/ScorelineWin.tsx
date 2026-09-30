@@ -10,7 +10,7 @@ export function ScorelineWin({ scoreline }: ScorelineWinProps) {
   const formatNum = (n: number) => n.toLocaleString("en-IN");
 
   return (
-    <section id="scoreline" aria-labelledby="scoreline-heading" className="scroll-mt-32">
+    <section id="scoreline" aria-labelledby="scoreline-heading" className="scroll-mt-44">
       <div className="flex items-center gap-2 mb-4 pb-1 border-b border-[var(--km-paper-line)]">
         <h2
           id="scoreline-heading"

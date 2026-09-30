@@ -44,7 +44,7 @@ export function PlanRoadmap({
   };
 
   return (
-    <section id="plan" aria-labelledby="plan-heading" className="scroll-mt-32">
+    <section id="plan" aria-labelledby="plan-heading" className="scroll-mt-44">
       <div className="flex items-center gap-2 mb-4 pb-1 border-b border-[var(--km-paper-line)]">
         <h2
           id="plan-heading"
