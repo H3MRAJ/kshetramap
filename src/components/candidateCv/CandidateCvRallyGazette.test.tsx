@@ -276,4 +276,36 @@ describe("Candidate CV - SEPARATE Rally Overview + Gazette Ledger Acceptance", (
     expect(html).toContain("Flood-ready Mokama");
     expect(html).toContain("lg:grid-cols-3");
   });
+
+  it("renders second dummy candidate (Rameshwar Prasad) in Overview and Gazette view", async () => {
+    const { getCandidateCv } = await import("@/lib/candidateCv/candidateCvRepo");
+    const rameshwarCv = await getCandidateCv("demo-mokama-rameshwar-prasad");
+    expect(rameshwarCv).not.toBeNull();
+
+    // Render Overview
+    const overviewHtml = renderToStaticMarkup(
+      <CandidateCvClient
+        initialCv={rameshwarCv!}
+        isOwner={false}
+        initialView="overview"
+      />
+    );
+    expect(overviewHtml).toContain("Rameshwar Prasad");
+    expect(overviewHtml).toContain("DEMO/FAKE");
+    expect(overviewHtml).toContain("चापाकल");
+    expect(overviewHtml).toContain("Mokama");
+
+    // Render Gazette
+    const gazetteHtml = renderToStaticMarkup(
+      <CandidateCvClient
+        initialCv={rameshwarCv!}
+        isOwner={false}
+        initialView="gazette"
+      />
+    );
+    expect(gazetteHtml).toContain("Rameshwar Prasad");
+    expect(gazetteHtml).toContain("Ward 04 पक्की नाली");
+    expect(gazetteHtml).toContain("सार्वजनिक चापाकल");
+    expect(gazetteHtml).toContain("Gazette ledger &amp; delivery receipts");
+  });
 });

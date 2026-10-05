@@ -63,12 +63,20 @@ export default async function AppDashboardPage() {
               Campaign portfolio &amp; delivery showcase for Bihar candidates and parties.
             </p>
           </div>
-          <Link
-            href="/app/candidates/demo-mokama-anant-kumar-singh"
-            className="inline-flex items-center justify-center rounded bg-emerald-700 px-3 py-1.5 text-xs font-medium text-white hover:bg-emerald-800 dark:bg-emerald-600 dark:hover:bg-emerald-700 shrink-0"
-          >
-            Open Candidate CV (Mokama) →
-          </Link>
+          <div className="flex flex-wrap items-center gap-2">
+            <Link
+              href="/app/candidates/demo-mokama-anant-kumar-singh"
+              className="inline-flex items-center justify-center rounded bg-emerald-700 px-3 py-1.5 text-xs font-medium text-white hover:bg-emerald-800 dark:bg-emerald-600 dark:hover:bg-emerald-700 shrink-0"
+            >
+              Anant Kumar Singh →
+            </Link>
+            <Link
+              href="/app/candidates/demo-mokama-rameshwar-prasad"
+              className="inline-flex items-center justify-center rounded border border-emerald-700 text-emerald-700 px-3 py-1.5 text-xs font-medium hover:bg-emerald-50 dark:border-emerald-500 dark:text-emerald-400 dark:hover:bg-emerald-950/40 shrink-0"
+            >
+              Rameshwar Prasad (Demo 2) →
+            </Link>
+          </div>
         </div>
       </div>
     </div>

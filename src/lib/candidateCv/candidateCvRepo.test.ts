@@ -210,6 +210,18 @@ describe("candidateCvRepo", () => {
       expect(cv?.plan.phases.length).toBeGreaterThan(0);
     });
 
+    it("loads candidate CV from fixture for second demo id (Rameshwar Prasad)", async () => {
+      const cv = await getCandidateCv("demo-mokama-rameshwar-prasad");
+      expect(cv).not.toBeNull();
+      expect(cv?.candidate.name).toBe("Rameshwar Prasad");
+      expect(cv?.candidate.seat).toContain("Mokama");
+      expect(cv?.serviceTimeline.length).toBeGreaterThan(0);
+      expect(cv?.worksPortfolio.length).toBeGreaterThan(0);
+      expect(cv?.agenda.pillars.length).toBeGreaterThan(0);
+      expect(cv?.plan.phases.length).toBeGreaterThan(0);
+      expect(cv?.candidate.demoLabel).toBe("DEMO/FAKE");
+    });
+
     it("returns null for non-existent candidate id", async () => {
       const cv = await getCandidateCv("non-existent-candidate-id-xyz");
       expect(cv).toBeNull();

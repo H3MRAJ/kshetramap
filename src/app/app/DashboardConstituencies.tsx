@@ -40,7 +40,14 @@ export function DashboardConstituencies({ acScope }: Props) {
                   href="/app/candidates/demo-mokama-anant-kumar-singh"
                   className="text-emerald-700 hover:underline dark:text-emerald-400 font-medium"
                 >
-                  {t("app.candidateCv")}
+                  {t("app.candidateCv")} (Anant)
+                </Link>
+                {" · "}
+                <Link
+                  href="/app/candidates/demo-mokama-rameshwar-prasad"
+                  className="text-emerald-700 hover:underline dark:text-emerald-400 font-medium"
+                >
+                  {t("app.candidateCv")} (Rameshwar)
                 </Link>
               </>
             )}

@@ -1,6 +1,11 @@
 "use client";
 
 import type { ReactNode } from "react";
+import Link from "next/link";
+import {
+  isAnantCandidate,
+  ANANT_CANDIDATE_CV_HREF,
+} from "@/lib/candidateCv/candidateLink";
 import type {
   BasemapId,
   BoothProps,
@@ -212,9 +217,19 @@ function LegendInline({
                 className="h-2.5 w-2.5 shrink-0 rounded-full"
                 style={{ backgroundColor: c.color }}
               />
-              <span className="min-w-0 flex-1 truncate text-zinc-800 dark:text-zinc-100">
-                {displayCandidateName(locale, c.key, c.name)}
-              </span>
+              {isAnantCandidate(c.key, c.name) ? (
+                <Link
+                  href={ANANT_CANDIDATE_CV_HREF}
+                  className="min-w-0 flex-1 truncate text-zinc-800 underline decoration-zinc-400/40 hover:text-emerald-700 hover:decoration-emerald-500 font-medium dark:text-zinc-100 dark:hover:text-emerald-400"
+                  title="Open Candidate CV"
+                >
+                  {displayCandidateName(locale, c.key, c.name)}
+                </Link>
+              ) : (
+                <span className="min-w-0 flex-1 truncate text-zinc-800 dark:text-zinc-100">
+                  {displayCandidateName(locale, c.key, c.name)}
+                </span>
+              )}
               <PartyLabel
                 party={c.party}
                 size="xs"

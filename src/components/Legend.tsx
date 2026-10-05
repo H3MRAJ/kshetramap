@@ -1,8 +1,13 @@
 "use client";
 
+import Link from "next/link";
 import type { Candidate, MapMode } from "@/lib/types";
 import { HEAT_BINS } from "@/lib/mapStyles";
 import { PartyLabel } from "./PartyLabel";
+import {
+  isAnantCandidate,
+  ANANT_CANDIDATE_CV_HREF,
+} from "@/lib/candidateCv/candidateLink";
 
 type Props = {
   mode: MapMode;
@@ -38,7 +43,17 @@ export function Legend({ mode, candidates, selectedCandidateKey }: Props) {
                   style={{ backgroundColor: c.color }}
                 />
                 <span className="flex min-w-0 items-center gap-1.5 truncate">
-                  <span className="truncate">{c.name}</span>
+                  {isAnantCandidate(c.key, c.name) ? (
+                    <Link
+                      href={ANANT_CANDIDATE_CV_HREF}
+                      className="truncate text-zinc-800 underline decoration-zinc-400/40 hover:text-emerald-700 dark:text-zinc-100 dark:hover:text-emerald-400 font-medium"
+                      title="Open Candidate CV"
+                    >
+                      {c.name}
+                    </Link>
+                  ) : (
+                    <span className="truncate">{c.name}</span>
+                  )}
                   <PartyLabel party={c.party} size="xs" className="text-zinc-500" />
                 </span>
                 <span className="ml-auto tabular-nums text-zinc-500">

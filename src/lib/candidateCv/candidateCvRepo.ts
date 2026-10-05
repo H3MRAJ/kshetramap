@@ -108,12 +108,19 @@ export function toPlainCandidateCv(doc: unknown): CandidateCvDoc {
   return plain as CandidateCvDoc;
 }
 
+const FIXTURES_DIR = path.join(process.cwd(), "data", "demo");
 const FIXTURE_PATH = path.join(
-  process.cwd(),
-  "data",
-  "demo",
+  FIXTURES_DIR,
   "candidate-cv-mokama-showcase.json"
 );
+
+const DEMO_FIXTURE_MAP: Record<string, string> = {
+  "demo-mokama-anant-kumar-singh": FIXTURE_PATH,
+  "demo-mokama-rameshwar-prasad": path.join(
+    FIXTURES_DIR,
+    "candidate-cv-mokama-rameshwar-prasad.json"
+  ),
+};
 
 /**
  * In-memory fallback cache for when neither Mongo nor filesystem write is durable.
@@ -143,15 +150,40 @@ export async function getCandidateCv(id: string): Promise<CandidateCvDoc | null>
     // Mongo may not be running or connected — proceed to file fallback
   }
 
-  // 3. Fallback to fixture JSON file
-  try {
-    const raw = await readFile(FIXTURE_PATH, "utf-8");
-    const parsed = JSON.parse(raw) as CandidateCvDoc;
-    if (parsed.candidate?.id === id || id === "demo-mokama-anant-kumar-singh") {
-      return toPlainCandidateCv(parsed);
+  // 3. Fallback to fixture JSON files
+  const candidatePaths = [
+    DEMO_FIXTURE_MAP[id],
+    path.join(FIXTURES_DIR, `candidate-cv-${id}.json`),
+    path.join(
+      FIXTURES_DIR,
+      `candidate-cv-mokama-${id.replace(/^demo-mokama-/, "")}.json`
+    ),
+  ].filter(Boolean) as string[];
+
+  for (const filePath of candidatePaths) {
+    try {
+      const raw = await readFile(filePath, "utf-8");
+      const parsed = JSON.parse(raw) as CandidateCvDoc;
+      if (
+        parsed.candidate?.id === id ||
+        (id === "demo-mokama-anant-kumar-singh" && parsed.candidate?.id)
+      ) {
+        return toPlainCandidateCv(parsed);
+      }
+    } catch {
+      // File not readable, try next candidate path
     }
-  } catch {
-    // File not readable
+  }
+
+  // Final fallback to Anant fixture if id matches
+  if (id === "demo-mokama-anant-kumar-singh") {
+    try {
+      const raw = await readFile(FIXTURE_PATH, "utf-8");
+      const parsed = JSON.parse(raw) as CandidateCvDoc;
+      return toPlainCandidateCv(parsed);
+    } catch {
+      // File not readable
+    }
   }
 
   return null;
@@ -182,9 +214,11 @@ export async function saveCandidateCv(cv: CandidateCvDoc): Promise<void> {
   // 2. Persist to file in data/demo/
   try {
     const filePath =
-      plain.candidate.id === "demo-mokama-anant-kumar-singh"
-        ? FIXTURE_PATH
-        : path.join(process.cwd(), "data", "demo", `candidate-cv-${plain.candidate.id}.json`);
+      DEMO_FIXTURE_MAP[plain.candidate.id] ??
+      path.join(
+        FIXTURES_DIR,
+        `candidate-cv-${plain.candidate.id}.json`
+      );
 
     await writeFile(filePath, JSON.stringify(plain, null, 2), "utf-8");
   } catch {

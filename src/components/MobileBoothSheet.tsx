@@ -20,6 +20,10 @@ import {
 import { BoothAssets } from "./BoothAssets";
 import { BoothIntelligence } from "./BoothIntelligence";
 import { PartyLabel } from "./PartyLabel";
+import {
+  isAnantCandidate,
+  ANANT_CANDIDATE_CV_HREF,
+} from "@/lib/candidateCv/candidateLink";
 
 type Props = {
   booth: BoothProps;
@@ -357,10 +361,24 @@ export function MobileBoothSheet({
                 />
                 <div className="min-w-0 flex-1">
                   <div className="kshetra-ui-hi truncate text-sm font-medium text-zinc-900 dark:text-zinc-50">
-                    {displayCandidateName(
-                      locale,
-                      booth.winner_key,
-                      booth.winner_name
+                    {isAnantCandidate(booth.winner_key, booth.winner_name) ? (
+                      <Link
+                        href={ANANT_CANDIDATE_CV_HREF}
+                        className="underline decoration-emerald-500/40 hover:text-emerald-700 dark:hover:text-emerald-400"
+                        title="Open Candidate CV"
+                      >
+                        {displayCandidateName(
+                          locale,
+                          booth.winner_key,
+                          booth.winner_name
+                        )}
+                      </Link>
+                    ) : (
+                      displayCandidateName(
+                        locale,
+                        booth.winner_key,
+                        booth.winner_name
+                      )
                     )}
                   </div>
                   <div className="mt-0.5 text-xs text-zinc-500">
@@ -433,9 +451,19 @@ export function MobileBoothSheet({
                     style={{ backgroundColor: r.color }}
                   />
                   <span className="min-w-0 flex-1">
-                    <span className="kshetra-ui-hi block truncate text-zinc-800 dark:text-zinc-100">
-                      {r.name}
-                    </span>
+                    {isAnantCandidate(r.key, r.name) ? (
+                      <Link
+                        href={ANANT_CANDIDATE_CV_HREF}
+                        className="kshetra-ui-hi block truncate font-medium text-zinc-800 underline decoration-zinc-400/40 hover:text-emerald-700 dark:text-zinc-100 dark:hover:text-emerald-400"
+                        title="Open Candidate CV"
+                      >
+                        {r.name}
+                      </Link>
+                    ) : (
+                      <span className="kshetra-ui-hi block truncate text-zinc-800 dark:text-zinc-100">
+                        {r.name}
+                      </span>
+                    )}
                     <PartyLabel
                       party={r.party}
                       size="xs"

@@ -12,6 +12,10 @@ import {
 import { BoothAssets } from "./BoothAssets";
 import { BoothIntelligence } from "./BoothIntelligence";
 import { PartyLabel } from "./PartyLabel";
+import {
+  isAnantCandidate,
+  ANANT_CANDIDATE_CV_HREF,
+} from "@/lib/candidateCv/candidateLink";
 
 type Props = {
   booth: BoothProps;
@@ -60,13 +64,28 @@ export function BoothPopup({
               </span>
             )}
             {t("booth.winner")}:{" "}
-            <span style={{ color: booth.winner_color }} className="font-medium">
-              {displayCandidateName(
-                locale,
-                booth.winner_key,
-                booth.winner_name
-              )}
-            </span>{" "}
+            {isAnantCandidate(booth.winner_key, booth.winner_name) ? (
+              <Link
+                href={ANANT_CANDIDATE_CV_HREF}
+                style={{ color: booth.winner_color }}
+                className="font-medium underline decoration-emerald-500/40 hover:decoration-emerald-500 hover:text-emerald-700 dark:hover:text-emerald-300"
+                title="Open Candidate CV"
+              >
+                {displayCandidateName(
+                  locale,
+                  booth.winner_key,
+                  booth.winner_name
+                )}
+              </Link>
+            ) : (
+              <span style={{ color: booth.winner_color }} className="font-medium">
+                {displayCandidateName(
+                  locale,
+                  booth.winner_key,
+                  booth.winner_name
+                )}
+              </span>
+            )}{" "}
             ({booth.winner_pct}%)
             {booth.match_confidence &&
               booth.match_confidence !== "high" && (
@@ -133,9 +152,19 @@ export function BoothPopup({
                     className="inline-block h-2 w-2 rounded-full"
                     style={{ backgroundColor: r.color }}
                   />
-                  <span className="font-medium text-zinc-800 dark:text-zinc-100">
-                    {r.name}
-                  </span>
+                  {isAnantCandidate(r.key, r.name) ? (
+                    <Link
+                      href={ANANT_CANDIDATE_CV_HREF}
+                      className="font-medium text-zinc-800 underline decoration-zinc-400/40 hover:text-emerald-700 hover:decoration-emerald-500 dark:text-zinc-100 dark:hover:text-emerald-400"
+                      title="Open Candidate CV"
+                    >
+                      {r.name}
+                    </Link>
+                  ) : (
+                    <span className="font-medium text-zinc-800 dark:text-zinc-100">
+                      {r.name}
+                    </span>
+                  )}
                 </span>
               </td>
               <td className="px-2 py-1.5 text-zinc-500">

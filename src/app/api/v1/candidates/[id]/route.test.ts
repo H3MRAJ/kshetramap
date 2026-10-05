@@ -125,6 +125,34 @@ describe("Candidate CV API (/api/v1/candidates/[id])", () => {
       expect(json.candidateCv.candidate.name).toBe("Anant Kumar Singh");
       expect(json.isOwner).toBe(true);
     });
+
+    it("returns second demo candidate CV (Rameshwar Prasad)", async () => {
+      vi.mocked(requireApiSession).mockResolvedValueOnce({
+        session: {
+          user: {
+            id: "viewer-2",
+            name: "Viewer",
+            phone: "9999999999",
+            role: "viewer",
+            ac_scope: [],
+            candidate_id: null,
+          },
+        } as any,
+      });
+
+      const res = await GET(
+        new Request("http://localhost/api/v1/candidates/demo-mokama-rameshwar-prasad"),
+        {
+          params: Promise.resolve({ id: "demo-mokama-rameshwar-prasad" }),
+        }
+      );
+
+      expect(res.status).toBe(200);
+      const json = await res.json();
+      expect(json.candidateCv.candidate.id).toBe("demo-mokama-rameshwar-prasad");
+      expect(json.candidateCv.candidate.name).toBe("Rameshwar Prasad");
+      expect(json.candidateCv.candidate.demoLabel).toBe("DEMO/FAKE");
+    });
   });
 
   describe("PATCH", () => {
