@@ -153,11 +153,11 @@ export async function getCandidateCv(id: string): Promise<CandidateCvDoc | null>
   // 3. Fallback to fixture JSON files
   const candidatePaths = [
     DEMO_FIXTURE_MAP[id],
-    path.join(FIXTURES_DIR, `candidate-cv-${id}.json`),
     path.join(
       FIXTURES_DIR,
       `candidate-cv-mokama-${id.replace(/^demo-mokama-/, "")}.json`
     ),
+    path.join(FIXTURES_DIR, `candidate-cv-${id}.json`),
   ].filter(Boolean) as string[];
 
   for (const filePath of candidatePaths) {
@@ -217,7 +217,7 @@ export async function saveCandidateCv(cv: CandidateCvDoc): Promise<void> {
       DEMO_FIXTURE_MAP[plain.candidate.id] ??
       path.join(
         FIXTURES_DIR,
-        `candidate-cv-${plain.candidate.id}.json`
+        `candidate-cv-mokama-${plain.candidate.id.replace(/^demo-mokama-/, "")}.json`
       );
 
     await writeFile(filePath, JSON.stringify(plain, null, 2), "utf-8");

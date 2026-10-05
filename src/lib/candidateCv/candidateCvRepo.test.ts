@@ -183,20 +183,31 @@ describe("candidateCvRepo", () => {
 
   describe("getCandidateCv & updateCandidateCv", () => {
     let originalFixtureContent: string;
+    let originalRameshwarFixtureContent: string;
     const fixturePath = path.join(
       process.cwd(),
       "data",
       "demo",
       "candidate-cv-mokama-showcase.json"
     );
+    const rameshwarFixturePath = path.join(
+      process.cwd(),
+      "data",
+      "demo",
+      "candidate-cv-mokama-rameshwar-prasad.json"
+    );
 
     beforeAll(async () => {
       originalFixtureContent = await readFile(fixturePath, "utf-8");
+      originalRameshwarFixtureContent = await readFile(rameshwarFixturePath, "utf-8");
     });
 
     afterAll(async () => {
       if (originalFixtureContent) {
         await writeFile(fixturePath, originalFixtureContent, "utf-8");
+      }
+      if (originalRameshwarFixtureContent) {
+        await writeFile(rameshwarFixturePath, originalRameshwarFixtureContent, "utf-8");
       }
     });
 
@@ -220,6 +231,26 @@ describe("candidateCvRepo", () => {
       expect(cv?.agenda.pillars.length).toBeGreaterThan(0);
       expect(cv?.plan.phases.length).toBeGreaterThan(0);
       expect(cv?.candidate.demoLabel).toBe("DEMO/FAKE");
+    });
+
+    it("ensures duplicate fixture file does not exist and single canonical fixture is used", async () => {
+      const duplicatePath = path.join(
+        process.cwd(),
+        "data",
+        "demo",
+        "candidate-cv-demo-mokama-rameshwar-prasad.json"
+      );
+      let duplicateExists = false;
+      try {
+        await readFile(duplicatePath);
+        duplicateExists = true;
+      } catch {
+        duplicateExists = false;
+      }
+      expect(duplicateExists).toBe(false);
+
+      const cv = await getCandidateCv("demo-mokama-rameshwar-prasad");
+      expect(cv?.candidate.name).toBe("Rameshwar Prasad");
     });
 
     it("returns null for non-existent candidate id", async () => {
