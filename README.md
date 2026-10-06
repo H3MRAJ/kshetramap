@@ -1,44 +1,10 @@
-# KshetraMap (Next app)
+# KshetraMap (moved)
 
-Private client repo: **`karmacodemeta/KshetraMap`**. Nested under **`karmacodemeta/client-websites`**.
+**Canonical home is now [karmacodemeta/kshetramap](https://github.com/karmacodemeta/kshetramap).**
 
-This folder is the website. Roll PDFs, OCR dumps, and `public/booth_assets` stay on the machine — they are gitignored.
+- **Live Pages:** https://karmacodemeta.github.io/kshetramap/
+- **Disk SoT:** `D:\KarmaCodeMeta\master\client-websites\KshetraMap` (KarmaCode Meta)
 
-See `HANDOFF.md` for product status. Parent pipeline (Python, 342 PDFs) lives in `D:\KarmaCode\KshetraMap\` and is not this git repo.
+This H3MRAJ mirror is **not** the product source of truth. GitHub Pages on this repo has been retired; do not publish here.
 
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
-
-## Getting Started
-
-First, run the development server:
-
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
-
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
-
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
-
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
-
-## Learn More
-
-To learn more about Next.js, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+Moved 2026-10-07.
